@@ -1,0 +1,9 @@
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+ion-scroll .item {
+  display: inline-block; 
+  margin: 0; 
+  width:200px; 
+  height:200px
+}
