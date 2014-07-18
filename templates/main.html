@@ -1,0 +1,86 @@
+ <ion-header-bar class="bar-positive">
+      <div class="button" ng-click="scrollTop()">
+      &lt;&lt;
+    </div>
+    <h1 class="title">SmartWidget - Infinite Horizontal Scroll</h1>
+    <div class="button" ng-click="scrollBottom()">
+      Next
+    </div>
+
+
+  </ion-header-bar> 
+
+  <ion-header-bar class="bar-light bar-subheader">
+    <input type="search" placeholder="Filter contacts..." ng-model="search.last_name">
+  </ion-header-bar> 
+
+  <br/><br/><br/><br/>
+  
+    <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Layout
+            </div>
+            <ion-radio ng-model="direction" ng-value="'x'" ng-click="layout()">Horizontal</ion-radio>
+            <ion-radio ng-model="direction" ng-value="'y'" ng-click="layout()">Vertical</ion-radio>
+          </label>
+         
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Auto Scroll
+            </div>
+            <ion-radio  ng-model="play" ng-value="true" ng-click="autoScroll(true)">Yes</ion-radio>
+            <ion-radio  ng-model="play" ng-value="false" ng-click="autoScroll(false)">No</ion-radio>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Items per page
+            </div>
+            <select ng-model="currentItemsPerPage" ng-change="changeItems()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+     </div>
+   
+    
+     <div>
+
+        <div id="horizontal">
+        <div class="button" ng-click="getScrollPosition()">Get Scroll Position (logs in console)</div>
+        <h5 class="title" style="padding-left:8px">{{items.length}}</h5>
+        
+        <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
+        <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
+
+        <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '200px'}">
+            <div class="item"
+                ng-repeat="item in items track by $index| filter : search"
+                ng-class="{'item-divider': item.isLetter}"
+                ng-style="{'width' : itemWidth}"
+                >
+               <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
+
+                <div>{{item.letter || (item.first_name+' '+item.last_name)}}</div>
+                <div>{{item.country}}</div>
+            </div>
+            
+        </ion-scroll>
+
+
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" icon="ion-loading-c" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
+        <div style="margin:20px 10px 10px">
+          <a href="http://forum.ionicframework.com/t/ionic-infinite-slideshow-carousel-horizontal-scrolling-with-set-pagination-using-collection-repeat/6155">Ionic Forum Post</a>
+        </div>
+        </div>
+
+
+
+     </div>
+    
+  
