@@ -1,9 +1,79 @@
-body {
-  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+ body {
+          cursor: url('http://ionicframework.com/img/finger.png'), auto;
+        }
+
+    #horizontal ion-scroll .item {
+      display: inline-block; 
+      margin: 0; 
+      /* width:200px; Causes cropping when backing up. */
+      min-width:15%; /* temp */
+      max-width:100%; /* temp */
+
+      height:160px;
+      white-space: normal;
+      word-wrap: normal;
+    }
+    #horizontal .item {
+      font-size: 14px;
+    }
+    #horizontal .item img {
+      margin-bottom: 10px;
+    }
+
+
+.button.button-icon.input-button {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: #bbb;
 }
-ion-scroll .item {
-  display: inline-block; 
-  margin: 0; 
-  width:200px; 
-  height:200px
+
+#vertical .list
+{
+  height :100%;
+}
+
+#vertical .list .item
+{
+  width : 100%;
+}
+#vertical .item img {
+  height: 60px;
+  width: 60px;
+  float: left;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+#vertical .list .my-item.item {
+  left: 0;
+  right: 0;
+  padding-top: 0;
+ 
+}
+    
+
+
+.fa.fa-angle-left {
+    opacity: 0.2;
+    left: 20px;
+    color:green;
+    transition: 0.2s linear all;
+}
+
+.fa.fa-angle-right {
+    opacity: 0.2;
+    right: 20px;
+    color:green;
+    transition: 0.2s linear all;
+    float:right;
+}
+
+.fa.fa-angle-left:hover {
+    opacity: 1;
+    color:blue;
+}
+
+.fa.fa-angle-right:hover {
+    opacity: 1;
+    color:blue;
 }
