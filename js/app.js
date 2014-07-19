@@ -13,7 +13,13 @@ app.config(function($stateProvider,$urlRouterProvider){
        });
 });
 
-app.controller('MainCtrl', function($scope, $ionicScrollDelegate,$interval) {
+
+app.service('itemFeed',function(){
+
+
+});
+
+app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval) {
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
       $scope.direction = 'x';
@@ -63,48 +69,45 @@ app.controller('MainCtrl', function($scope, $ionicScrollDelegate,$interval) {
       }
 
       $scope.layout = function()
-      {
-          console.log($scope.direction);
-      }
+      // {
+      //     console.log($scope.direction);
+      // }
 
-      //Letters are shorter, everything else is 52 pixels
-      $scope.getItemHeight = function(item) {
-        return item.isLetter ? 40 : 100;
-      };
-      $scope.getItemWidth = function(item) {
-        return '100%';
-      };
+      // //Letters are shorter, everything else is 52 pixels
+      // $scope.getItemHeight = function(item) {
+      //   return item.isLetter ? 40 : 100;
+      // };
+      // $scope.getItemWidth = function(item) {
+      //   return '100%';
+      // };
 
-       $scope.getScrollPosition = function()
-      {
-        console.log($scope.isde.getScrollPosition());
-        console.log($scope.isde.getScrollView());
-      }
+      //  $scope.getScrollPosition = function()
+      // {
+      //   console.log($scope.isde.getScrollPosition());
+      //   console.log($scope.isde.getScrollView());
+      // }
     
       $scope.scrollPrev = function()
       {
-        if($scope.scrollposition == 0)
-        {
-            // Loading More Items
-            for(var i = 0; i<$scope.number;i++)
-            {
-              $scope.items.unshift($scope.contacts[$scope.totalElement - $scope.reverseElement - i]);
-            }
-
-            $scope.reverseElement += 10;
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-        }
-        else
-        {
-           $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"]/2;
-           $scope.scrollposition = $scope.scrollposition - $scope.toscroll;
-           $scope.isde.scrollTo($scope.scrollposition,0,true);
-        }
+          if($scope.scrollposition == 0)
+          {
+            $index = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
+            $scope.items.unshift($scope.contacts[$index]);
+            $scope.reverseElement++;
+          }
+          else
+          {
+            $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
+            $scope.scrollposition = $scope.scrollposition - $scope.toscroll;
+            $scope.isde.scrollTo($scope.scrollposition,0,true);
+          }
+          
+        
       }
 
       $scope.scrollNext = function()
       {
-        $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"]/2;
+        $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
         $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
         $scope.isde.scrollTo($scope.scrollposition,0,true);
       }
@@ -149,16 +152,16 @@ app.controller('MainCtrl', function($scope, $ionicScrollDelegate,$interval) {
   
       }
 
-      // Change the number of Items Displayed on screen
-      $scope.currentItemsPerPage =  1;
-      $scope.itemWidth = 100/$scope.currentItemsPerPage + "%"; 
+      // // Change the number of Items Displayed on screen
+      // $scope.currentItemsPerPage =  1;
+      // $scope.itemWidth = 100/$scope.currentItemsPerPage + "%"; 
 
 
-      $scope.changeItems = function()
-      {
-        $scope.itemWidth = 100/$scope.currentItemsPerPage + "%";
-        console.log($scope.isde.resize());
-      }
+      // $scope.changeItems = function()
+      // {
+      //   $scope.itemWidth = 100/$scope.currentItemsPerPage + "%";
+      //   console.log($scope.isde.resize());
+      // }
 
       // Function for Auto Scroll
       // Default Set to True
@@ -169,9 +172,10 @@ app.controller('MainCtrl', function($scope, $ionicScrollDelegate,$interval) {
         if($scope.play == true)
         { 
             scroll = $interval(function(){
-            $scope.scrollposition = $scope.scrollposition + 100;
+            $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
+            $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
             $scope.isde.scrollTo($scope.scrollposition,0,true);
-            },100); 
+            },1200); 
         }
         else if($scope.play == false)
         {
@@ -181,5 +185,11 @@ app.controller('MainCtrl', function($scope, $ionicScrollDelegate,$interval) {
         
 
       }
+
+        // // Get Feed
+        // $http.jsonp("http://georgiafacts.org/smart/api/itemfeed?dynamic=1&tid=16400&callback=JSON_CALLBACK").success(function(data){
+        //     $scope.feed = data;
+        // });
+    
 
     });
