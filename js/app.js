@@ -13,12 +13,6 @@ app.config(function($stateProvider,$urlRouterProvider){
        });
 });
 
-
-app.service('itemFeed',function(){
-
-
-});
-
 app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval) {
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
@@ -68,18 +62,18 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval)
         letters.push(letter);
       }
 
-      $scope.layout = function()
+      //$scope.layout = function()
       // {
       //     console.log($scope.direction);
       // }
 
-      // //Letters are shorter, everything else is 52 pixels
-      // $scope.getItemHeight = function(item) {
-      //   return item.isLetter ? 40 : 100;
-      // };
-      // $scope.getItemWidth = function(item) {
-      //   return '100%';
-      // };
+      //Letters are shorter, everything else is 52 pixels
+      $scope.getItemHeight = function(item) {
+        return item.isLetter ? 40 : 100;
+      };
+      $scope.getItemWidth = function(item) {
+        return '100%';
+      };
 
       //  $scope.getScrollPosition = function()
       // {
@@ -152,9 +146,9 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval)
   
       }
 
-      // // Change the number of Items Displayed on screen
-      // $scope.currentItemsPerPage =  1;
-      // $scope.itemWidth = 100/$scope.currentItemsPerPage + "%"; 
+      // Change the number of Items Displayed on screen
+      $scope.currentItemsPerPage =  1;
+      $scope.itemWidth = 100/$scope.currentItemsPerPage + "%"; 
 
 
       // $scope.changeItems = function()
