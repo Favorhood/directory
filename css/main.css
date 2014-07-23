@@ -3,8 +3,7 @@
         }
 
     #horizontal ion-scroll .item {
-      display: inline-block; 
-      margin: 0; 
+      display: inline-block;  
       /* width:200px; Causes cropping when backing up. */
       min-width:15%; /* temp */
       max-width:100%; /* temp */

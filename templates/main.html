@@ -15,7 +15,6 @@
   </ion-header-bar> 
 
   <br/><br/><br/><br/>
-  
     <div class="list">
           <label class="item item-input item-select">
             <div class="input-label">
@@ -32,6 +31,20 @@
             <ion-radio  ng-model="play" ng-value="true" ng-click="autoScroll(true)">Yes</ion-radio>
             <ion-radio  ng-model="play" ng-value="false" ng-click="autoScroll(false)">No</ion-radio>
           </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Items per page
+            </div>
+            <select ng-model="currentItemsPerPage" ng-change="changeItems()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+
      </div>
    
     
@@ -43,19 +56,15 @@
         
         <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
         <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
-
         <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '200px'}">
             <div class="item"
-                collection-repeat="item in items"
-                collection-item-height="'100%'"
-                collection-item-width="'100%'"
-                ng-class="{'item-divider': item.isLetter}"
+                ng-repeat="item in items track by $index"
                 ng-style="{'width' : itemWidth}"
                 >
-               <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
+               <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
+               <img ng-src="{{item.images[0].thumbnail}}" >
+                <div>{{item.title}}</div>
 
-                <div>{{item.letter || (item.first_name+' '+item.last_name)}}</div>
-                <div>{{item.country}}</div>
             </div>
             
         </ion-scroll>
