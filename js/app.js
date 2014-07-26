@@ -25,7 +25,7 @@ app.config(function($stateProvider,$urlRouterProvider){
        });
 });
 
-app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,data) {
+app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,data, $ionicPopup) {
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
       $scope.direction = 'x';
@@ -164,9 +164,36 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
         
 
       }
+      /*
+      $ionicModal.fromTemplateUrl('settings-modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
+      
+      $scope.ShowSettingsModal = function() {
+        $scope.modal.show();
+      };
+      */
+      $scope.ShowSettingsPopup = function() {
+          $scope.data = {}
 
-      
-      
+          // An elaborate, custom popup
+          var settingsPopup = $ionicPopup.confirm({
+            templateUrl: 'settings-modal.html',
+            title: 'Favorhood Directory Settings',
+            scope: $scope,
+          });
+          settingsPopup.then(function(res) {
+             if(res) {
+               console.log('You are sure');
+             } else {
+               console.log('You are not sure');
+             }
+          });
+          
+         };
     
 
     });

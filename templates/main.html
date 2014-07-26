@@ -1,13 +1,7 @@
  <ion-header-bar class="bar-positive">
-      <div class="button" ng-click="scrollTop()">
-      &lt;&lt;
-    </div>
+    <div class="button" ng-click="scrollTop()">&lt;&lt;</div>
     <h1 class="title">SmartWidget - Infinite Horizontal Scroll</h1>
-    <div class="button" ng-click="scrollBottom()">
-      Next
-    </div>
-
-
+    <div class="button" ng-click="scrollBottom()">Next</div>
   </ion-header-bar> 
 
   <ion-header-bar class="bar-light bar-subheader">
@@ -78,5 +72,57 @@
         </div>
       
      </div>
-    
-  
+<div class="tabs tabs-icon-only tabs-positive">
+  <a class="tab-item">
+    <i class="icon ion-ios7-gear" ng-click="ShowSettingsPopup()"></i>
+  </a>
+</div>
+
+<script id="settings-modal.html" type="text/ng-template">
+
+      <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Layout
+            </div>
+            <ion-radio ng-model="direction" ng-value="'x'" ng-click="layout()">Horizontal</ion-radio>
+            <ion-radio ng-model="direction" ng-value="'y'" ng-click="layout()">Vertical</ion-radio>
+          </label>
+         
+          <label class="item item-input item-select">
+            <ul class="list">
+
+              <li class="item item-toggle">
+                 
+                 <div class="input-label">
+                  Auto Scroll
+                </div>
+                 <label class="toggle toggle-assertive">
+                   <input type="checkbox">
+                   <div class="track">
+                     <div class="handle"></div>
+                   </div>
+                 </label>
+              </li>
+            </ul>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Items per page
+            </div>
+            <select ng-model="currentItemsPerPage" ng-change="changeItems()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+        
+     </div>
+    <div class="button" ng-click="getScrollPosition()">Get Scroll Position (logs in console)</div>
+
+  </div>
+</script>    
+
