@@ -185,6 +185,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
             title: 'Favorhood Directory Settings',
             scope: $scope,
           });
+          console.log(settingsPopup);
           settingsPopup.then(function(res) {
              if(res) {
                console.log('You are sure');

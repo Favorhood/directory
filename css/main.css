@@ -76,3 +76,7 @@
     opacity: 1;
     color:blue;
 }
+
+.popup.popup-showing.active {
+    width:266px;
+}
