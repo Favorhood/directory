@@ -1,0 +1,36 @@
+
+      <div>
+      
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Layout
+            </div>
+            <select ng-model="settings.direction">
+              <option value="x">Horizontal</option>
+              <option value="y">Vertical</option>
+            </select>
+          </label>
+        </div>
+         
+          
+        <ion-toggle ng-model="settings.play" ng-click="autoScroll(settings.play)" toggle-class="toggle">Auto Scroll</ion-toggle>
+
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Items per page
+            </div>
+            <select ng-model="settings.currentItemsPerPage" ng-change="changeItems()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+        </div>
+
+    <div class="button" ng-click="getScrollPosition()">Show scroll position in console</div>
+
+  </div>
