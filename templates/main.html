@@ -1,7 +1,7 @@
  <ion-header-bar class="bar-positive">
     <div class="button" ng-click="scrollTop()">&lt;&lt;</div>
     <h1 class="title">SmartWidget - Infinite Horizontal Scroll</h1>
-    <div class="button" ng-click="scrollBottom()">Next</div>
+    <div class="button icon ion-ios7-gear" ng-click="ShowSettingsPopup()"></div>
   </ion-header-bar> 
 
   <ion-header-bar class="bar-light bar-subheader">
@@ -20,7 +20,9 @@
         <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
         <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '200px'}">
             <div class="item"
-                ng-repeat="item in items track by $index"
+                collection-repeat="item in items"
+                collection-item-height="'100%'"
+                collection-item-width="itemWidth"
                 ng-style="{'width' : itemWidth}"
                 >
                <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
@@ -32,7 +34,7 @@
         </ion-scroll>
 
 
-      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" icon="ion-loading-c" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" icon="" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
 
         <div style="margin:20px 10px 10px">
           <a href="http://forum.ionicframework.com/t/ionic-infinite-slideshow-carousel-horizontal-scrolling-with-set-pagination-using-collection-repeat/6155">Ionic Forum Post</a>
@@ -40,8 +42,3 @@
         </div>
       
      </div>
-<div class="tabs tabs-icon-only tabs-positive">
-  <a class="tab-item">
-    <i class="icon ion-ios7-gear" ng-click="ShowSettingsPopup()"></i>
-  </a>
-</div>

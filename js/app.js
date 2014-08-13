@@ -155,7 +155,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
             $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
             $scope.isde.scrollTo($scope.scrollposition,0,true);
-            },1500); 
+            },2200); 
         }
         else if($scope.settings.play == false)
         {
