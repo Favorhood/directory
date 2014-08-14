@@ -18,10 +18,10 @@
         
         <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
         <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
-        <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '200px'}">
+        <ion-scroll direction="y" delegate-handle="isde" class="item wide-item" style="border-bottom:blue 4px solid" ng-style="{'height': '100%'}">
             <div class="item"
                 collection-repeat="item in items"
-                collection-item-height="'100%'"
+                collection-item-height="'33.3%'"
                 collection-item-width="itemWidth"
                 ng-style="{'width' : itemWidth}"
                 >

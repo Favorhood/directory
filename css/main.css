@@ -1,24 +1,23 @@
  body {
-          cursor: url('http://ionicframework.com/img/finger.png'), auto;
-        }
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
 
-    #horizontal ion-scroll .item {
-      display: inline-block;  
-      /* width:200px; Causes cropping when backing up. */
-      min-width:15%; /* temp */
-      max-width:100%; /* temp */
+#horizontal ion-scroll .item {
+  display: inline-block;  
+  /* width:200px; Causes cropping when backing up. */
+  min-width:15%; /* temp */
+  max-width:100%; /* temp */
 
-      height:160px;
-      white-space: normal;
-      word-wrap: normal;
-    }
-    #horizontal .item {
-      font-size: 14px;
-    }
-    #horizontal .item img {
-      margin-bottom: 10px;
-    }
-
+  height:160px;
+  white-space: normal;
+  word-wrap: normal;
+}
+#horizontal .item {
+  font-size: 14px;
+}
+#horizontal .item img {
+  margin-bottom: 10px;
+}
 
 .button.button-icon.input-button {
   position: absolute;
@@ -27,13 +26,11 @@
   color: #bbb;
 }
 
-#vertical .list
-{
+#vertical .list {
   height :100%;
 }
 
-#vertical .list .item
-{
+#vertical .list .item {
   width : 100%;
 }
 #vertical .item img {
