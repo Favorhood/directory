@@ -3,12 +3,13 @@ var app =  angular.module('contactsApp', ['ionic']);
 
 app.config(function($stateProvider,$urlRouterProvider){
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home/horizontal');
 
        $stateProvider.state('home',
        {
           url : '/home',
           templateUrl : 'templates/main.html',
+          abstract : true,
           controller : 'MainCtrl',
           resolve : {
               data : function($http,$q)
@@ -22,15 +23,23 @@ app.config(function($stateProvider,$urlRouterProvider){
                 return deffered.promise;
               }
           }
+       })
+       .state('home.horizontal',
+       {
+          url : '/horizontal',
+          templateUrl : 'templates/horizontal.html'
+       }).
+       state('home.vertical',
+       {
+          url : '/vertical',
+          templateUrl : 'templates/vertical.html'
        });
 });
 
-app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,data, $ionicPopup) {
+app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,data, $ionicPopup,$state) {
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
-      $scope.direction = 'x';
       $scope.reverseElement = 0;    
-      //$scope.play = false;
       $scope.scrollposition = 0;
       $scope.toscroll = 1200;
       $scope.feed = data;
@@ -38,7 +47,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.noMoreItemsAvailable = false;
       $scope.number = 5;
       $scope.totalElement = $scope.feed.data.items.length;
-      $scope.settings = {"play" : false,"direction" : "y" ,"currentItemsPerPage" : 1};
+      $scope.settings = {"play" : false,"direction" : "x" ,"currentItemsPerPage" : 1};
      
       var locitems = $scope.items.length;
       for(var i=0;i<5;i++)
@@ -166,6 +175,22 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
 
       }
 
+      // Changing Directions.
+      $scope.$watch('settings.direction',function(newVal,oldVal)
+      {
+            // When Direction is Horizontal
+            if(newVal == 'x')
+            {
+              $state.go('home.horizontal');
+            }
+            else if(newVal == 'y')
+            {
+              $state.go('home.vertical');
+            }
+
+      });
+         
+
       $scope.ShowSettingsPopup = function() {
           $scope.data = {}
 
@@ -186,6 +211,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
                   }
             ]
           });
+
          
           
       }; 

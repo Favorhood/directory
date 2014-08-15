@@ -1,0 +1,24 @@
+<div id="vertical">
+          <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
+      
+        <ion-scroll direction="y" delegate-handle="isde" class="item wide-item" ng-style="{'height': '100%'}">
+            <div class="item"
+                collection-repeat="item in items"
+                collection-item-height="'10%'"
+                collection-item-width="'100%'"
+                >
+               <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
+               <img ng-src="{{item.images[0].thumbnail}}" >
+                <div>{{item.title}}</div>
+
+            </div>
+            
+        </ion-scroll>
+
+
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" icon="" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
+
+        <div style="margin:20px 10px 10px">
+          <a href="http://forum.ionicframework.com/t/ionic-infinite-slideshow-carousel-horizontal-scrolling-with-set-pagination-using-collection-repeat/6155">Ionic Forum Post</a>
+        </div>
+</div>

@@ -1,0 +1,27 @@
+<div id="horizontal">
+          <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
+        
+        <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
+        <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
+        <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '200px'}">
+            <div class="item"
+                collection-repeat="item in items"
+                collection-item-height="'100%'"
+                collection-item-width="itemWidth"
+                ng-style="{'width' : itemWidth}"
+                >
+               <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
+               <img ng-src="{{item.images[0].thumbnail}}" >
+                <div>{{item.title}}</div>
+
+            </div>
+            
+        </ion-scroll>
+
+
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" icon="" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
+
+        <div style="margin:20px 10px 10px">
+          <a href="http://forum.ionicframework.com/t/ionic-infinite-slideshow-carousel-horizontal-scrolling-with-set-pagination-using-collection-repeat/6155">Ionic Forum Post</a>
+        </div>
+</div>
