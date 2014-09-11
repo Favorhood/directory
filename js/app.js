@@ -69,6 +69,11 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
         console.log($scope.isde.getScrollPosition());
         console.log($scope.isde.getScrollView());
       }
+      
+      $scope.scrollTop = function()
+      {
+          $ionicScrollDelegate.scrollTop();
+      }
 
       $scope.swipeRight = function()
       {
