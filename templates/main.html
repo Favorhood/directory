@@ -5,7 +5,8 @@
 </ion-header-bar> 
 
 <ion-header-bar class="bar-light bar-subheader">
-      <input type="search" placeholder="Filter contacts..." ng-model="search.last_name">
+      <input type="search" placeholder="Filter contacts..." ng-model="search" ng-focus="searchFocused = true"
+      ng-blur="searchFocused = false" ng-change="scrollTop()">
 </ion-header-bar> 
 <ion-content>
        <div ui-view>        

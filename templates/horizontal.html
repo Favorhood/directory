@@ -5,7 +5,7 @@
         <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
         <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '200px'}">
             <div class="item"
-                collection-repeat="item in items"
+                collection-repeat="item in getLocations()"
                 collection-item-height="'100%'"
                 collection-item-width="itemWidth"
                 ng-style="{'width' : itemWidth}"
