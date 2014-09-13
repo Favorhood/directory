@@ -131,7 +131,9 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.getItemWidth = function(item) {
         return '100%';
       };
-
+      $scope.scrollBottom = function() {
+        $ionicScrollDelegate.scrollBottom(true);
+      };
       $scope.getScrollPosition = function()
       {
         console.log($scope.isde.getScrollPosition());
