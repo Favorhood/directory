@@ -15,7 +15,9 @@ app.config(function($stateProvider,$urlRouterProvider){
               data : function($http,$q)
               {
                 var deffered = $q.defer();
-                $http.jsonp("http://gastateparks.org/smart/api/itemfeed?show=images&btid=1,3&callback=JSON_CALLBACK").then(function(data){
+                //http://gastateparks.org/smart/api/itemfeed?show=images&btid=1,3&callback=JSON_CALLBACK
+                
+                $http.jsonp("http://review.georgiafacts.org/smart/api/itemfeed?tid=16400&callback=JSON_CALLBACK").then(function(data){
 
                     deffered.resolve(data);
                 });
