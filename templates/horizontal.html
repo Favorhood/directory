@@ -12,7 +12,7 @@
                 >
                <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
                <img ng-src="{{item.images[0].thumbnail}}" >
-                <div>{{item.title}}</div>
+                <div>{{$index}}. {{item.title}}</div>
 
             </div>
             
