@@ -3,15 +3,14 @@
         
         <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
         <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
-        <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '200px'}">
-            <div class="item"
+        <ion-scroll direction="x" delegate-handle="isde" class="item wide-item" ng-style="{'height': '500px'}">
+            <div style="margin:5px;" class="item"
                 collection-repeat="item in getLocations()"
-                collection-item-height="'100%'"
-                collection-item-width="itemWidth"
-                ng-style="{'width' : itemWidth}"
+                collection-item-height="'30%'"
+                collection-item-width="'30%'"
                 >
                <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
-               <img ng-src="{{item.images[0].thumbnail}}" >
+               <img ng-src="{{item.images[0].thumbnail}}" style="height: 33%; width: 33%;">
                 <div>{{$index}}. {{item.title}}</div>
 
             </div>
