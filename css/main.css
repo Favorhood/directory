@@ -76,11 +76,8 @@ body {
 }
 
 /* Override ionic.min.css */
-.item {
+.scroll .item {
   padding:0px;
-}
-.popup-body .item {
-  padding:15px;
 }
 .button {
   line-height: normal;
