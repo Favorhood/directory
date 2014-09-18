@@ -1,6 +1,8 @@
- body {
+body {
+  /*
           cursor: url('http://ionicframework.com/img/finger.png'), auto;
-        }
+  */
+}
 
     #horizontal ion-scroll .item {
       display: inline-block;  
@@ -71,4 +73,15 @@
 
 .popup.popup-showing.active {
     width:266px;
+}
+
+/* Override ionic.min.css */
+.item {
+  padding:0px;
+}
+.popup-body .item {
+  padding:15px;
+}
+.button {
+  line-height: normal;
 }
