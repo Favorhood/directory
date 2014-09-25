@@ -315,7 +315,8 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       }; 
       $scope.gotScrolled = function () {
           console.log("got scrolled");
-          window.scrollBy(0,10);
+          //$ionicScrollDelegate.scrollBy(0,10);
+          //window.scrollBy(0,10);
       };
 
     });
