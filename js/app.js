@@ -295,7 +295,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
           // An elaborate, custom popup
           var settingsPopup = $ionicPopup.show({
             templateUrl: 'templates/popup.html',
-            title: 'Favorhood Directory Settings',
+            title: 'Slideshow Settings',
             scope: $scope,
             buttons : [
                   {
@@ -314,9 +314,20 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
           
       }; 
       $scope.gotScrolled = function () {
-          console.log("got scrolled");
-          //$ionicScrollDelegate.scrollBy(0,10);
+          var topPosition = $ionicScrollDelegate.getScrollPosition().top;
+          console.log("got scrolled: " + topPosition);
+          // BUGBUG - This loops because it triggers itself.
+          //$ionicScrollDelegate.scrollBy(0,20);
           //window.scrollBy(0,10);
+      };
+
+      $scope.onDragUp = function () {
+        console.log("onDragUp: " + $ionicScrollDelegate.getScrollPosition().top);
+        $ionicScrollDelegate.scrollBy(0,20);
+      };
+      $scope.onDragDown = function () {
+        console.log("onDragDown: " + $ionicScrollDelegate.getScrollPosition().top);
+        $ionicScrollDelegate.scrollBy(0,-20);
       };
 
     });

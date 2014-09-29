@@ -3,15 +3,24 @@
       
         <div class="list">
           <!--<label class="item item-input item-select">-->
-          <label class="item item-input">
-            <!--<div class="input-label">
-              Layout
-            </div>-->
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Swipe
+            </div>
+
+            <select ng-model="settings.direction">
+              <option value="x">Horizontal</option>
+              <option value="y">Vertical</option>
+            </select>
+          </label>
+
+          <label class="item item-input item-select">
             <div class="input-label">
             Rows
             </div>
-            <!--<select ng-model="settings.direction">-->
-            <select ng-model="settings.rowsPerPage" ng-change=changeRows()>
+            <!-- Might not be used: ng-change="changeRows()" -->
+            <select ng-model="settings.rowsPerPage" ng-change="changeRows()">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -23,13 +32,8 @@
             </select>
             
           </label>
-        </div>
-         
-          
-        <ion-toggle ng-model="settings.play" ng-click="autoScroll(settings.play)" toggle-class="toggle">Auto Scroll</ion-toggle>
-
-        <div class="list">
-          <label class="item item-input">
+        
+          <label class="item item-input item-select">
           <!--<label class="item item-input item-select">
             <div class="input-label">
               Items per page
@@ -48,6 +52,12 @@
           </label>
         </div>
 
-    <div class="button" ng-click="getScrollPosition()">Show position in console</div>
+        <div class="list">
+          <ion-toggle ng-model="settings.play" ng-click="autoScroll(settings.play)" toggle-class="toggle">Auto Play</ion-toggle>
+        </div>
+
+        <!--
+        <div class="button" ng-click="getScrollPosition()">Show position in console</div>
+        -->
 
   </div>
