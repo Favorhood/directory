@@ -20,7 +20,7 @@
             Rows
             </div>
             <!-- Might not be used: ng-change="changeRows()" -->
-            <select ng-model="settings.rowsPerPage" ng-change="changeRows()">
+            <select ng-model="settings.rows" ng-change="changeItems()">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -41,7 +41,7 @@
             <div class="input-label">
             Columns
             </div>
-            <select ng-model="settings.currentItemsPerPage" ng-change="changeItems()">
+            <select ng-model="settings.cols" ng-change="changeItems()">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

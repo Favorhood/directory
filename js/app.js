@@ -14,7 +14,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.noMoreItemsAvailable = false;
       $scope.number = 5;
       $scope.totalElement = $scope.feed.data.items.length;
-      $scope.settings = {"play" : false,"direction" : "x" ,"currentItemsPerPage" : 1};
+      $scope.settings = {"play" : false,"direction" : "x" ,"rows" : 3,"cols" : 3};
       var letters = $scope.letters = [];
       var contacts = $scope.contacts = [];
       var currentCharCode = 'A'.charCodeAt(0) - 1;
@@ -205,14 +205,15 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       }
 
       // Change the number of Items Displayed on screen
-      $scope.settings.currentItemsPerPage =  1;
-      $scope.itemWidth = 100/$scope.settings.currentItemsPerPage + "%"; 
+      $scope.itemWidth = 100/$scope.settings.cols + "%"; 
+      $scope.itemHeight = 100/$scope.settings.rows + "%";
 
 
       $scope.changeItems = function()
       {
-        $scope.itemWidth = 100/$scope.settings.currentItemsPerPage + "%";
-        console.log($scope.isde.resize());
+        $scope.itemWidth = 100/$scope.settings.cols + "%";
+        $scope.itemHeight = 100/$scope.settings.rows + "%";
+        $scope.isde.resize();
       }
 
       // Function for Auto Scroll
