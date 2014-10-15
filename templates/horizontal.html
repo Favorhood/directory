@@ -1,19 +1,18 @@
-<div id="horizontal">
+<div id="horizontal" style="width:60%; margin-left:100px">
           <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
+
         {{itemHeight}}
-        {{itemWidth}}
+        {{itemWidth}}<br>
         <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
         <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
         
         <!-- on-swipe-up and on-swipe-down might not have an effect. Test without these on mobile. -->
-        <ion-scroll direction="x" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" delegate-handle="isde" class="item wide-item" ng-style="{'height': '500px'}">
-            <div style="margin:0px; position:relative;border:1px solid red;width:33%" class="item"
+        <ion-scroll direction="x" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" delegate-handle="isde" class="item wide-item" ng-style="{'height': '444px'}">
+            <!-- Removed width:33% from the following -->
+            <div style="margin:0px; position:relative;border:1px solid red;" class="item"
                 collection-repeat="item in getLocations()"
                 collection-item-height="itemHeight"
-                collection-item-width="itemWidth"
-
-
-                >
+                collection-item-width="itemWidth">
 
                <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
                <img ng-src="{{item.images[0].thumbnail}}" style="width:100%;">

@@ -10,7 +10,9 @@ body {
       min-width:15%; /* temp */
       max-width:100%; /* temp */
 
-      height:160px;
+      width:50%;
+      height:222px; /* temp - half of 444px */
+
       white-space: normal;
       word-wrap: normal;
     }
