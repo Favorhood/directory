@@ -13,7 +13,7 @@
                 collection-repeat="item in getLocations()"
                 collection-item-height="itemHeight"
                 collection-item-width="itemWidth"
-                ng-style="{height:444/settings.rows}">
+                ng-style="{height:444/settings.rows,width:itemWidth}">
 
                <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
                <img ng-src="{{item.images[0].thumbnail}}" style="width:100%;">
