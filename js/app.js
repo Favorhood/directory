@@ -130,6 +130,9 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
     
       $scope.scrollPrev = function()
       {
+          // Stopping to AutoScroll
+          $scope.settings.play = false;
+
           if($scope.scrollposition == 0)
           {
             $index = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
@@ -148,6 +151,9 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
 
       $scope.scrollNext = function()
       {
+        // Stopping to AutoScroll
+        $scope.settings.play = false;
+
         $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
         $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
         $scope.isde.scrollTo($scope.scrollposition,0,true);
