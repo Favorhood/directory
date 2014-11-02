@@ -12,7 +12,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.feed = data;
       $scope.items = [];
       $scope.noMoreItemsAvailable = false;
-      $scope.number = 5;
+      $scope.number = 40;
       $scope.totalElement = $scope.feed.data.items.length;
       $scope.settings = {"play" : false,"direction" : "x" ,"rows" : 2,"cols" : 2};
       var letters = $scope.letters = [];
@@ -22,7 +22,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       
        
       var locitems = $scope.items.length;
-      for(var i=0;i<5;i++)
+      for(var i=0;i<40;i++)
       {
           $scope.items.push($scope.feed.data.items[locitems + i]);
       }
@@ -214,12 +214,15 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.itemWidth = 100/$scope.settings.cols + "%"; 
       $scope.itemHeight = 100/$scope.settings.rows + "%";
 
-
+      $scope.lessRows = $scope.settings.rows <= 3;
+      console.log($scope.settings.rows <= 3);
       $scope.changeItems = function()
       {
         $scope.itemWidth = 100/$scope.settings.cols + "%";
         $scope.itemHeight = 100/$scope.settings.rows + "%";
+        $scope.lessRows = ($scope.settings.rows <= 3);
         $scope.isde.resize();
+
       }
 
       // Function for Auto Scroll
