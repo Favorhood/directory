@@ -17,7 +17,7 @@ angular.module('contactsApp.config',['ionic'])
                 //http://gastateparks.org/smart/api/itemfeed?show=images&btid=1,3&callback=JSON_CALLBACK
                 //http://review.georgiafacts.org/smart/api/itemfeed?tid=16400&callback=JSON_CALLBACK
                 //http://review.gastateparks.org/smart/api/itemfeed?btid=1%2C3&show=images&callback=JSON_CALLBACK
-                $http.get("feed.json").then(function(data){
+                $http.get("feed.txt").then(function(data){
 
                     deffered.resolve(data);
                 });
