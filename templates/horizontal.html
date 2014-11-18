@@ -1,18 +1,10 @@
-<div id="horizontal" style="width:60%; margin-left:100px">
-          <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
-
-        {{itemHeight}}
-        {{itemWidth}}
-        <span ng-if="lessRows">True</span>
-        <span ng-if="!lessRows">False</span>
-        <br>
-        <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
-        <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
+<div id="horizontal" style="width:100%; max-width:1000px; margin:0 auto;">
+        <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
         
         <!-- on-swipe-up and on-swipe-down might not have an effect. Test without these on mobile. -->
         <ion-scroll direction="x" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" delegate-handle="isde" class="item wide-item" ng-style="{'height': '444px'}">
             <!-- Removed width:33% from the following -->
-            <div style="margin:0px; position:relative;border:1px solid red;" class="item"
+            <div style="margin:0px; position:relative;" class="item"
                 collection-repeat="item in getLocations()"
                 collection-item-height="itemHeight"
                 collection-item-width="itemWidth"
@@ -32,7 +24,19 @@
 
       <ion-infinite-scroll ng-if="!noMoreItemsAvailable" icon="" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
 
-        <div style="margin:20px 10px 10px">
+      <i class="fa fa-angle-left fa-4x" ng-click="scrollPrev()"></i>
+      <i class="fa fa-angle-right fa-4x" ng-click="scrollNext()"></i>
+
+      <div style="background:#eee;padding:18px">
+        <div>
+          {{itemHeight}}
+          {{itemWidth}}
+          <span ng-if="lessRows">True</span>
+          <span ng-if="!lessRows">False</span>
+        </div>
+
+        <div style="margin:10px 0px 10px">
           <a href="http://forum.ionicframework.com/t/ionic-infinite-slideshow-carousel-horizontal-scrolling-with-set-pagination-using-collection-repeat/6155">Ionic Forum Post</a>
         </div>
+      </div>
 </div>

@@ -3,30 +3,39 @@ body {
           cursor: url('http://ionicframework.com/img/finger.png'), auto;
   */
 }
-
-#horizontal ion-scroll
-{
+.searchbar {
+    width:100%;
+    max-width:1000px; 
+    margin:0 auto;
+    background-color: #bbb !important;
+    border-color: #bbb !important;
+    padding:10px;
+    min-height: 64px;
+}
+.item {
+  border-style: none;
+}
+#horizontal ion-scroll {
   height:444px;
 }
+#horizontal ion-scroll .item {
+  display: inline-block;  
+  /* width:200px; Causes cropping when backing up. */
+  min-width:15%; /* temp */
+  max-width:100%; /* temp */
 
-    #horizontal ion-scroll .item {
-      display: inline-block;  
-      /* width:200px; Causes cropping when backing up. */
-      min-width:15%; /* temp */
-      max-width:100%; /* temp */
+  width:50%;
+  height:222px; /* temp - half of 444px */
 
-      width:50%;
-      height:222px; /* temp - half of 444px */
-
-      white-space: normal;
-      word-wrap: normal;
-    }
-    #horizontal .item {
-      font-size: 14px;
-    }
-    #horizontal .item img {
-      margin-bottom: 10px;
-    }
+  white-space: normal;
+  word-wrap: normal;
+}
+#horizontal .item {
+  font-size: 14px;
+}
+#horizontal .item img {
+  margin-bottom: 10px;
+}
 
 
 .button.button-icon.input-button {
