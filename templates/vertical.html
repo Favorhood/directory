@@ -1,4 +1,4 @@
-<div id="horizontal" style="width:100%; max-width:1000px; margin:0 auto;">
+<div id="horizontal">
         <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
         
         <!-- on-swipe-up and on-swipe-down might not have an effect. Test without these on mobile. -->
@@ -29,7 +29,7 @@
 
       <div style="background:#eee;padding:18px">
         <div>
-          {{itemHeight}}
+          [current number] {{$index+1}} of [total] &nbsp; {{itemHeight}}
           {{itemWidth}}
           <span ng-if="lessRows">True</span>
           <span ng-if="!lessRows">False</span>
