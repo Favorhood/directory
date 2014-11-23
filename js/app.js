@@ -14,7 +14,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.noMoreItemsAvailable = false;
       $scope.number = 40;
       $scope.totalElement = $scope.feed.data.items.length;
-      $scope.settings = {"play" : false,"direction" : "x" ,"rows" : 2,"cols" : 2};
+      $scope.settings = {"play" : false,"direction" : "y" ,"rows" : 2,"cols" : 2};
       var letters = $scope.letters = [];
       var contacts = $scope.contacts = [];
       var currentCharCode = 'A'.charCodeAt(0) - 1;

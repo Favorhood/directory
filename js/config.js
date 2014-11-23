@@ -2,7 +2,7 @@
 angular.module('contactsApp.config',['ionic'])
 .config(function($stateProvider,$urlRouterProvider){
 
-    $urlRouterProvider.otherwise('/home/horizontal');
+    $urlRouterProvider.otherwise('/home/vertical');
 
        $stateProvider.state('home',
        {
