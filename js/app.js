@@ -247,6 +247,21 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
         
 
       }
+      $scope.playslide = false;
+      $scope.PlaySlides = function(value)
+      {
+        $scope.playslide = true;
+        scroll = $interval(function(){
+        $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
+        $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
+        $scope.isde.scrollTo($scope.scrollposition,0,true);
+        },2200); 
+      }
+      $scope.StopSlides = function(value)
+      {
+        $scope.playslide = false;
+        $interval.cancel(scroll);
+      }
 
       // Changing Directions.
       $scope.$watch('settings.direction',function(newVal,oldVal)

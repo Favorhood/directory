@@ -43,7 +43,8 @@
         
           <div style="float:right">
           <div class="button icon ion-ios7-settings-strong" ng-click="ShowSettingsPopup()"></div>
-          <div class="button icon ion-play" ng-click="ShowSettingsPopup()"></div>
+          <div ng-if="!playslide" class="button icon ion-play" ng-click="PlaySlides()"></div>
+          <div ng-if="playslide" class="button icon ion-pause" ng-click="StopSlides()"></div>
           </div>
       </div>
 </div>
