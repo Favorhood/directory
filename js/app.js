@@ -16,7 +16,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.totalElement = $scope.feed.data.items.length;
       $scope.settings = {"play" : false,"direction" : "x" ,"rows" : 1,"cols" : 1};
       var letters = $scope.letters = [];
-      var contacts = $scope.contacts = [];
+      var locations = $scope.locations = [];
       var currentCharCode = 'A'.charCodeAt(0) - 1;
       
       
@@ -42,7 +42,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
           addLetter(currentCharCode + i);
         }
         currentCharCode = locationCharCode;
-        $scope.items.push(location);
+        locations.push(location);
       });
 
       //If names ended before Z, add everything up to Z
@@ -52,7 +52,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
 
       function addLetter(code) {
         var letter = String.fromCharCode(code);
-        $scope.items.push({
+        locations.push({
           isLetter: true,
           letter: letter
         });
@@ -65,7 +65,7 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
         //Filter contacts by $scope.search.
         //Additionally, filter letters so that they only show if there
         //is one or more matching contact
-        return $scope.items.filter(function(item) {
+        return locations.filter(function(item) {
           if (typeof item.title != 'undefined') {
               var itemDoesMatch = !$scope.search || item.isLetter ||
                 item.title.toLowerCase().indexOf($scope.search.toLowerCase()) > -1;
@@ -316,6 +316,12 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       $scope.onDragDown = function () {
         console.log("onDragDown: " + $ionicScrollDelegate.getScrollPosition().top);
         $ionicScrollDelegate.scrollBy(0,-20);
+      };
+      
+      $scope.onScroll = function() {
+          console.log($scope.totalElement);
+          console.log($scope.reverseElement);
+          $scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
       };
 
     });
