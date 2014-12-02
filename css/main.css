@@ -13,8 +13,14 @@ body {
     min-height: 64px;
 }
 .contentHolder {
-  width:100%; max-width:1000px; margin:0 auto;
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
 }
+.contentHolder::-webkit-scrollbar {
+ display: none;
+}
+
 .item {
   border-style: none;
   border-bottom:#ddd 1px solid;
