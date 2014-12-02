@@ -132,6 +132,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       {
           // Stopping to AutoScroll
           $scope.settings.play = false;
+          $scope.autoScroll('toggle');
 
           if($scope.scrollposition == 0)
           {
@@ -153,7 +154,8 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       {
         // Stopping to AutoScroll
         $scope.settings.play = false;
-
+        $scope.autoScroll('toggle');
+        
         $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
         $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
         $scope.isde.scrollTo($scope.scrollposition,0,true);
@@ -230,7 +232,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       var scroll;
       $scope.autoScroll = function(value)
       {
-        
+        $scope.isde.getScrollView().options.animationDuration = 1500;  
         if(value === 'button')
         {
           $scope.settings.play = !$scope.settings.play;
@@ -238,7 +240,11 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
 
         if($scope.settings.play == true)
         { 
-            $scope.isde.getScrollView().options.animationDuration = 1500;            
+            $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
+            $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
+            $scope.isde.scrollTo($scope.scrollposition,0,true); 
+
+                      
             scroll = $interval(function(){
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
             $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
