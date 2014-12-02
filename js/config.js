@@ -2,14 +2,17 @@
 angular.module('contactsApp.config',['ionic'])
 .config(function($stateProvider,$urlRouterProvider){
 
-    $urlRouterProvider.otherwise('/home/horizontal');
+    $urlRouterProvider.otherwise('/home/scroll');
 
        $stateProvider.state('home',
        {
           url : '/home',
           templateUrl : 'templates/main.html',
-          abstract : true,
-          controller : 'MainCtrl',
+          abstract : true
+       })
+       .state('home.scroll',
+       {
+          url : '/scroll',
           resolve : {
               data : function($http,$q)
               {
@@ -24,16 +27,8 @@ angular.module('contactsApp.config',['ionic'])
 
                 return deffered.promise;
               }
-          }
+          },
+          controller : 'ScrollCtrl',
+          templateUrl : 'templates/scroll.html'
        })
-       .state('home.horizontal',
-       {
-          url : '/horizontal',
-          templateUrl : 'templates/horizontal.html'
-       }).
-       state('home.vertical',
-       {
-          url : '/vertical',
-          templateUrl : 'templates/vertical.html'
-       });
 });

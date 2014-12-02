@@ -3,7 +3,7 @@
 
 var app =  angular.module('contactsApp', ['ionic','contactsApp.config','contactsApp.directives']);
 
-app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,data, $ionicPopup,$state, filterFilter) {
+app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interval,data, $ionicPopup,$state, filterFilter) {
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
       $scope.reverseElement = 0;    
@@ -230,53 +230,43 @@ app.controller('MainCtrl', function($scope,$http,$ionicScrollDelegate,$interval,
       var scroll;
       $scope.autoScroll = function(value)
       {
-        console.log($scope.settings.play);
+        
+        if(value === 'button')
+        {
+          $scope.settings.play = !$scope.settings.play;
+        }
+
         if($scope.settings.play == true)
         { 
+            $scope.isde.getScrollView().options.animationDuration = 1500;            
             scroll = $interval(function(){
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
             $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
-            $scope.isde.scrollTo($scope.scrollposition,0,true);
-            },2200); 
+            $scope.isde.scrollTo($scope.scrollposition,0,true);            
+            },2500); 
         }
         else if($scope.settings.play == false)
         {
-          console.log(angular.isDefined(scroll));
           $interval.cancel(scroll);
         }
         
 
       }
-      $scope.playslide = false;
-      $scope.PlaySlides = function(value)
-      {
-        $scope.playslide = true;
-        scroll = $interval(function(){
-        $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-        $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
-        $scope.isde.scrollTo($scope.scrollposition,0,true);
-        },2200); 
-      }
-      $scope.StopSlides = function(value)
-      {
-        $scope.playslide = false;
-        $interval.cancel(scroll);
-      }
 
-      // Changing Directions.
-      $scope.$watch('settings.direction',function(newVal,oldVal)
-      {
-            // When Direction is Horizontal
-            if(newVal == 'x')
-            {
-              $state.go('home.horizontal');
-            }
-            else if(newVal == 'y')
-            {
-              $state.go('home.vertical');
-            }
+      // // Changing Directions.
+      // $scope.$watch('settings.direction',function(newVal,oldVal)
+      // {
+      //       // When Direction is Horizontal
+      //       if(newVal == 'x')
+      //       {
+      //         $state.go('home.horizontal');
+      //       }
+      //       else if(newVal == 'y')
+      //       {
+      //         $state.go('home.vertical');
+      //       }
 
-      });
+      // });
          
 
       $scope.ShowSettingsPopup = function() {
