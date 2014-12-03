@@ -1,4 +1,9 @@
 <div id="horizontal">
+    
+        <ol class="ionic-pages">
+            <li ng-repeat="item in getLocations()" class="ionic-current-page"></li>
+        </ol>
+        
         <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
         
         <!-- on-swipe-up and on-swipe-down might not have an effect. Test without these on mobile. -->
@@ -14,7 +19,7 @@
                
                <img ng-if="lessRows" ng-src="{{item.images[0].large}}" style="width:100%;">
                <img ng-if="!lessRows" ng-src="{{item.images[0].thumbnail}}"  style="width:100%;max-width:120px">
-
+                
                 <div class="slide-text">
                   <div class="slide-title">{{$index+1}}. {{item.title}}</div>
                 </div>
