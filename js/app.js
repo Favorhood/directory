@@ -185,6 +185,15 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
              $scope.items.push($scope.feed.data.items[locitems + i]);
           }
         }
+        
+        
+        $scope.loadMoreByPaging = function()
+        {
+            console.log("paging clicked");
+            $scope.isde.scrollBottom(true);
+            $scope.loadMore();
+        }
+        
         /* apply filter again */
         $scope.items.filter(function(item) {
           if (typeof item.title != 'undefined') {

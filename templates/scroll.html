@@ -1,7 +1,7 @@
 <div id="horizontal">
     
         <ol class="ionic-pages">
-            <li ng-repeat="item in getLocations()" class="ionic-current-page"></li>
+            <li ng-repeat="item in getLocations()" ng-class="{'ionic-current-page':$index===0}"><div ng-click="loadMoreByPaging()"></div></li>
         </ol>
         
         <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
