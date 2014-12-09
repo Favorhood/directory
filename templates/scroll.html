@@ -1,7 +1,17 @@
 <div id="horizontal">
     
         <ol class="ionic-pages">
-            <li ng-repeat="item in getLocations()" ng-class="{'ionic-current-page':$index===0}"><div ng-click="loadMoreByPaging()"></div></li>
+            <!--<li ng-repeat="n in [] | range:10" ng-class="{'ionic-current-page':$index===0}" ng-click="loadMoreByPaging()"></li>-->
+            <li ng-class="{'ionic-current-page':items.length <= 10}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 10 && items.length <= 20}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 20 && items.length <= 30}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 30 && items.length <= 40}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 40 && items.length <= 50}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 50 && items.length <= 60}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 60 && items.length <= 70}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 70 && items.length <= 80}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 80 && items.length <= 90}"></li>
+            <li ng-class="{'ionic-current-page':items.length > 90 && items.length <= 100}"></li>
         </ol>
         
         <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
@@ -72,7 +82,7 @@
             ng-blur="searchFocused = false" ng-change="scrollTop()">
           </div> 
 
-          [current item number] of [{{totalElement}}] &nbsp; &nbsp; {{itemHeight}}
+          [{{celm}}] of [{{totalElement}}] &nbsp; &nbsp; {{itemHeight}}
           {{itemWidth}}
           <span ng-if="lessRows">True</span>
           <span ng-if="!lessRows">False</span>

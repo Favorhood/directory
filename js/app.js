@@ -2,7 +2,14 @@
 'use strict';
 
 var app =  angular.module('contactsApp', ['ionic','contactsApp.config','contactsApp.directives']);
-
+app.filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
+    for (var i=0; i<total; i++)
+      input.push(i);
+    return input;
+  };
+});
 app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interval,data, $ionicPopup,$state, filterFilter) {
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
@@ -15,6 +22,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       $scope.number = 40;
       $scope.totalElement = $scope.feed.data.items.length;
       $scope.settings = {"play" : false,"direction" : "x" ,"rows" : 1,"cols" : 1};
+      $scope.celm = 1;
       var letters = $scope.letters = [];
       var locations = $scope.locations = [];
       var currentCharCode = 'A'.charCodeAt(0) - 1;
@@ -145,6 +153,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
             $scope.scrollposition = $scope.scrollposition - $scope.toscroll;
             $scope.isde.scrollTo($scope.scrollposition,0,true);
+            $scope.celm = $scope.scrollposition / 1002;            
           }
           
         
@@ -159,6 +168,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
         $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
         $scope.isde.scrollTo($scope.scrollposition,0,true);
+        $scope.celm = $scope.scrollposition / 1002;            
       }
      
       //  It is called when there is need of more feed
@@ -187,12 +197,6 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         }
         
         
-        $scope.loadMoreByPaging = function()
-        {
-            console.log("paging clicked");
-            $scope.isde.scrollBottom(true);
-            $scope.loadMore();
-        }
         
         /* apply filter again */
         $scope.items.filter(function(item) {
@@ -257,7 +261,10 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
             scroll = $interval(function(){
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
             $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
-            $scope.isde.scrollTo($scope.scrollposition,0,true);            
+            console.log($scope.scrollposition);
+            
+            $scope.isde.scrollTo($scope.scrollposition,0,true);
+            $scope.celm = $scope.scrollposition / 1002;            
             },2500); 
         }
         else if($scope.settings.play == false)
@@ -324,9 +331,20 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       };
       
       $scope.onScroll = function() {
-          console.log($scope.totalElement);
-          console.log($scope.reverseElement);
+          //console.log($scope.totalElement);
+          //console.log($scope.reverseElement);
           $scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
+          $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
+          $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
+          $scope.celm = $scope.scrollposition / 1002;            
       };
+      
+    $scope.loadMoreByPaging = function()
+    {
+        console.log("paging clicked");
+        $scope.isde.scrollBottom(true);
+        $scope.loadMore();
+    }
+        
 
     });
