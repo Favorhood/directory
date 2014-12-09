@@ -22,7 +22,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       
        
       var locitems = $scope.items.length;
-      for(var i=0;i<10;i++)
+      for(var i=0;i<40;i++)
       {
           $scope.items.push($scope.feed.data.items[locitems + i]);
       }
