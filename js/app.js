@@ -333,9 +333,9 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       $scope.onScroll = function() {
           //console.log($scope.totalElement);
           //console.log($scope.reverseElement);
-          $scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
-          $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-          $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
+          //$scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
+          //$scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
+          //$scope.scrollposition = $scope.scrollposition + $scope.toscroll;
           $scope.celm = $scope.scrollposition / 1002;            
       };
       
