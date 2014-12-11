@@ -14,7 +14,6 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
       $scope.reverseElement = 0;    
-      $scope.scrollposition = 0;
       $scope.toscroll = 1200;
       $scope.feed = data;
       $scope.items = [];
@@ -26,7 +25,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       var letters = $scope.letters = [];
       var locations = $scope.locations = [];
       var currentCharCode = 'A'.charCodeAt(0) - 1;
-      
+      var scrollposition = 0;
       
        
       var locitems = $scope.items.length;
@@ -122,7 +121,8 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
 
       $scope.swipeRight = function()
       {
-           if($scope.scrollposition == 0)
+          scrollposition = $scope.isde.getScrollPosition()["left"];
+           if(scrollposition == 0)
             {
               $index = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
               $scope.items.unshift($scope.feed.data.items[$index]);
@@ -141,8 +141,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           // Stopping to AutoScroll
           $scope.settings.play = false;
           $scope.autoScroll('toggle');
-
-          if($scope.scrollposition == 0)
+          if(scrollposition === 0)
           {
             $index = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
             $scope.items.unshift($scope.feed.data.items[$index]);
@@ -151,9 +150,9 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           else
           {
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-            $scope.scrollposition = $scope.scrollposition - $scope.toscroll;
-            $scope.isde.scrollTo($scope.scrollposition,0,true);
-            $scope.celm = $scope.scrollposition / 1002;            
+            scrollposition = $scope.isde.getScrollPosition()["left"] - $scope.toscroll;
+            $scope.isde.scrollTo(scrollposition,0,true);
+            $scope.celm = scrollposition / 1002;            
           }
           
         
@@ -166,9 +165,9 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         $scope.autoScroll('toggle');
         
         $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-        $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
-        $scope.isde.scrollTo($scope.scrollposition,0,true);
-        $scope.celm = $scope.scrollposition / 1002;            
+        scrollposition = $scope.isde.getScrollPosition()["left"] + $scope.toscroll;
+        $scope.isde.scrollTo(scrollposition,0,true);
+        $scope.celm = scrollposition / 1002;            
       }
      
       //  It is called when there is need of more feed
@@ -254,17 +253,17 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         if($scope.settings.play == true)
         { 
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-            $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
-            $scope.isde.scrollTo($scope.scrollposition,0,true); 
+            scrollposition = $scope.isde.getScrollPosition()["left"] + $scope.toscroll;
+            $scope.isde.scrollTo(scrollposition,0,true); 
 
                       
             scroll = $interval(function(){
             $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-            $scope.scrollposition = $scope.scrollposition + $scope.toscroll;
-            console.log($scope.scrollposition);
+            scrollposition = $scope.isde.getScrollPosition()["left"] + $scope.toscroll;
+            console.log(scrollposition);
             
-            $scope.isde.scrollTo($scope.scrollposition,0,true);
-            $scope.celm = $scope.scrollposition / 1002;            
+            $scope.isde.scrollTo(scrollposition,0,true);
+            $scope.celm = scrollposition / 1002;            
             },2500); 
         }
         else if($scope.settings.play == false)
@@ -335,8 +334,8 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           //console.log($scope.reverseElement);
           //$scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
           //$scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-          //$scope.scrollposition = $scope.scrollposition + $scope.toscroll;
-          $scope.celm = $scope.scrollposition / 1002;            
+          //scrollposition = scrollposition + $scope.toscroll;
+          $scope.celm = scrollposition / 1002;            
       };
       
     $scope.loadMoreByPaging = function()
