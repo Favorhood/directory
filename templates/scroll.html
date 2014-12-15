@@ -17,7 +17,7 @@
         <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
         
         <!-- on-swipe-up and on-swipe-down might not have an effect. Test without these on mobile. -->
-        <ion-scroll direction="x" ng-if="settings.direction == 'x'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" paging="true" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '444px'}">
+        <ion-scroll direction="x" ng-if="settings.direction == 'x'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" scroll-to="{{scrollTo}}" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '444px'}">
             <!-- Removed width:33% from the following -->
             <div style="margin:0px; position:relative;" class="item"
                 collection-repeat="item in getLocations()"
@@ -44,7 +44,7 @@
             
         </ion-scroll>
 
-        <ion-scroll direction="y" ng-if="settings.direction == 'y'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '444px'}">
+        <ion-scroll direction="y" ng-if="settings.direction == 'y'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" scroll-to="{{scrollTo}}" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '444px'}">
             <!-- Removed width:33% from the following -->
             <div style="margin:0px; position:relative;" class="item"
                 collection-repeat="item in getLocations()"
@@ -62,8 +62,8 @@
                 </div>
 
                 <div style="position:absolute;top:45%;z-index:100;width:100%">
-                  <i class="fa fa-angle-left fa-4x" style="font-size:64pt;color:#fff" ng-click="scrollPrev()"></i>
-                  <i class="fa fa-angle-right fa-4x" style="font-size:64pt;color:#fff"  ng-click="scrollNext()"></i>
+                  <i class="fa fa-angle-up fa-4x" style="font-size:64pt;color:#fff" ng-click="scrollPrev()"></i>
+                  <i class="fa fa-angle-down fa-4x" style="font-size:64pt;color:#fff;float:right"  ng-click="scrollNext()"></i>
                 </div>
                 
 

@@ -14,7 +14,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       
       $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
       $scope.reverseElement = 0;    
-      $scope.toscroll = 1200;
+      $scope.toscroll = undefined;
       $scope.feed = data;
       $scope.items = [];
       $scope.noMoreItemsAvailable = false;
@@ -22,12 +22,14 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       $scope.totalElement = $scope.feed.data.items.length;
       $scope.settings = {"play" : false,"direction" : "x" ,"rows" : 1,"cols" : 1};
       $scope.celm = 1;
+      $scope.scrollTo = undefined;
       var letters = $scope.letters = [];
       var locations = $scope.locations = [];
       var currentCharCode = 'A'.charCodeAt(0) - 1;
       var scrollposition = 0;
+      var check = false;
       
-       
+      // Loading First 40 Items in the array
       var locitems = $scope.items.length;
       for(var i=0;i<40;i++)
       {
@@ -141,19 +143,39 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           // Stopping to AutoScroll
           $scope.settings.play = false;
           $scope.autoScroll('toggle');
-          if(scrollposition === 0)
+         
+          // Scroll if Direction is Horizontal
+          if($scope.settings.direction === 'x')
           {
-            $index = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
-            $scope.items.unshift($scope.feed.data.items[$index]);
-            $scope.reverseElement++;
+               if(scrollposition === 0)
+                {
+                  $index = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
+                  $scope.items.unshift($scope.feed.data.items[$index]);
+                  $scope.reverseElement++;
+                }
+                else
+                {
+                  imScroll('x',$scope.isde,false);
+                  $scope.celm = scrollposition / 1002;            
+                }
           }
-          else
-          {
-            $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-            scrollposition = $scope.isde.getScrollPosition()["left"] - $scope.toscroll;
-            $scope.isde.scrollTo(scrollposition,0,true);
-            $scope.celm = scrollposition / 1002;            
+          // If Direction is Vertical
+          else if($scope.settings.direction === 'y')
+          { 
+                if(scrollposition === 0)
+                {
+                  $index = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
+                  $scope.items.unshift($scope.feed.data.items[$index]);
+                  $scope.reverseElement++;
+                }
+                else
+                {
+                  imScroll('y',$scope.isde,false);
+                  $scope.celm = scrollposition / 1002;   
+                }
+
           }
+         
           
         
       }
@@ -164,16 +186,20 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         $scope.settings.play = false;
         $scope.autoScroll('toggle');
         
-        $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-        scrollposition = $scope.isde.getScrollPosition()["left"] + $scope.toscroll;
-        $scope.isde.scrollTo(scrollposition,0,true);
-        $scope.celm = scrollposition / 1002;            
+        if($scope.settings.direction === 'x')
+        {
+          imScroll('x',$scope.isde,true);
+          $scope.celm = scrollposition / 1002;  
+        }
+        else if($scope.settings.direction === 'y')
+        {
+          imScroll('y',$scope.isde,true);
+          $scope.celm = scrollposition / 1002;                 
+        }
+                  
       }
      
       //  It is called when there is need of more feed
-     
-
-
       $scope.loadMore = function()
       {
         
@@ -229,7 +255,6 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       $scope.itemHeight = 100/$scope.settings.rows + "%";
 
       $scope.lessRows = $scope.settings.rows <= 3;
-      console.log($scope.settings.rows <= 3);
       $scope.changeItems = function()
       {
         $scope.itemWidth = 100/$scope.settings.cols + "%";
@@ -252,19 +277,24 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
 
         if($scope.settings.play == true)
         { 
-            $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-            scrollposition = $scope.isde.getScrollPosition()["left"] + $scope.toscroll;
-            $scope.isde.scrollTo(scrollposition,0,true); 
+            if($scope.settings.direction === 'x'){
+
+              imScroll('x',$scope.isde,true);                      
+              scroll = $interval(function(){
+                imScroll('x',$scope.isde,true);  
+                $scope.celm = scrollposition / 1002;            
+              },2500); 
+            }
+            else if($scope.settings.direction === 'y'){
+
+              imScroll('y',$scope.isde,true);  
 
                       
-            scroll = $interval(function(){
-            $scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
-            scrollposition = $scope.isde.getScrollPosition()["left"] + $scope.toscroll;
-            console.log(scrollposition);
-            
-            $scope.isde.scrollTo(scrollposition,0,true);
-            $scope.celm = scrollposition / 1002;            
-            },2500); 
+              scroll = $interval(function(){
+                imScroll('y',$scope.isde,true);  
+                $scope.celm = scrollposition / 1002;            
+              },2500); 
+            }
         }
         else if($scope.settings.play == false)
         {
@@ -275,19 +305,34 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       }
 
       // // Changing Directions.
-      // $scope.$watch('settings.direction',function(newVal,oldVal)
-      // {
-      //       // When Direction is Horizontal
-      //       if(newVal == 'x')
-      //       {
-      //         $state.go('home.horizontal');
-      //       }
-      //       else if(newVal == 'y')
-      //       {
-      //         $state.go('home.vertical');
-      //       }
+      $scope.$watch('settings.direction',function(newVal,oldVal)
+      {
+            // When Direction is Vertical
+            if(newVal == 'y')
+            {
+              
+              scrollposition = scrollposition / $scope.isde.getScrollView()["__clientWidth"];
+              scrollposition = scrollposition * $scope.isde.getScrollView()["__clientHeight"];
+                    
+            }
 
-      // });
+            else if(newVal == 'x')
+            {
+                if(check === false)
+                {
+                  check = true;
+                }
+                else
+                {
+
+                  scrollposition = scrollposition / $scope.isde.getScrollView()["__clientHeight"];
+                  scrollposition = scrollposition * $scope.isde.getScrollView()["__clientWidth"]; 
+                }
+               
+            }
+            
+            $scope.scrollTo = Math.ceil(scrollposition);
+      });
          
 
       $scope.ShowSettingsPopup = function() {
@@ -304,7 +349,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
                     type : 'button-positive',
                     onTap : function(e)
                     {
-                      console.log("Closing Popup");
+                      
                       settingsPopup.close();
                     }
                   }
@@ -335,15 +380,50 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           //$scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
           //$scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
           //scrollposition = scrollposition + $scope.toscroll;
-          $scope.celm = scrollposition / 1002;            
+          $scope.celm = scrollposition / 1002;        
+
+          if($scope.settings.direction === 'x')
+            scrollposition  = $scope.isde.getScrollPosition()["left"];
+          else if($scope.settings.direction === 'y')
+            scrollposition  = $scope.isde.getScrollPosition()["top"];
+
+
       };
       
     $scope.loadMoreByPaging = function()
     {
-        console.log("paging clicked");
         $scope.isde.scrollBottom(true);
         $scope.loadMore();
     }
         
 
     });
+
+
+// Function for Scrolling
+
+function imScroll(direction,delegate,increment)
+{
+    var toscroll  = undefined;
+    var scrollposition = undefined;
+
+    if(direction === 'x')
+    {
+      toscroll = delegate.getScrollView()["__clientWidth"];
+      if(increment === true)
+        scrollposition = delegate.getScrollPosition()["left"] + toscroll;
+      else 
+        scrollposition = delegate.getScrollPosition()["left"] - toscroll;
+      delegate.scrollTo(scrollposition,0,true);
+    }
+    else if(direction === 'y')
+    {
+      toscroll = delegate.getScrollView()["__clientHeight"];
+      if(increment === true)
+        scrollposition = delegate.getScrollPosition()["top"] + toscroll;
+      else 
+        scrollposition = delegate.getScrollPosition()["top"] - toscroll;
+      delegate.scrollTo(0,scrollposition,true);
+    }
+
+}
