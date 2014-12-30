@@ -156,7 +156,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
                 else
                 {
                   imScroll('x',$scope.isde,false);
-                  $scope.celm = scrollposition / 1002;            
+                  $scope.celm = Math.ceil(scrollposition / 1002);
                 }
           }
           // If Direction is Vertical
@@ -171,7 +171,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
                 else
                 {
                   imScroll('y',$scope.isde,false);
-                  $scope.celm = scrollposition / 1002;   
+                  $scope.celm = Math.ceil(scrollposition / 1002);   
                 }
 
           }
@@ -189,12 +189,12 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         if($scope.settings.direction === 'x')
         {
           imScroll('x',$scope.isde,true);
-          $scope.celm = scrollposition / 1002;  
+          $scope.celm = Math.ceil(scrollposition / 1002);
         }
         else if($scope.settings.direction === 'y')
         {
           imScroll('y',$scope.isde,true);
-          $scope.celm = scrollposition / 1002;                 
+          $scope.celm = Math.ceil(scrollposition / 1002);
         }
                   
       }
@@ -282,7 +282,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
               imScroll('x',$scope.isde,true);                      
               scroll = $interval(function(){
                 imScroll('x',$scope.isde,true);  
-                $scope.celm = scrollposition / 1002;            
+                $scope.celm = Math.ceil(scrollposition / 1002);
               },2500); 
             }
             else if($scope.settings.direction === 'y'){
@@ -292,7 +292,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
                       
               scroll = $interval(function(){
                 imScroll('y',$scope.isde,true);  
-                $scope.celm = scrollposition / 1002;            
+                $scope.celm = Math.ceil(scrollposition / 1002);
               },2500); 
             }
         }
@@ -380,7 +380,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           //$scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
           //$scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
           //scrollposition = scrollposition + $scope.toscroll;
-          $scope.celm = scrollposition / 1002;        
+          $scope.celm = Math.ceil(scrollposition / 1002);        
 
           if($scope.settings.direction === 'x')
             scrollposition  = $scope.isde.getScrollPosition()["left"];
