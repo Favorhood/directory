@@ -98,6 +98,15 @@ body {
   width : 40px;
 }
 
+
+.slideControls
+{
+  position:absolute;
+  top:35%;
+  z-index:1000;
+
+}
+
 .fa.fa-angle-left {
     opacity: 0.2;
     left: 20px;
@@ -119,6 +128,31 @@ body {
 }
 
 .fa.fa-angle-right:hover {
+    opacity: 1;
+    color:blue;
+}
+
+.fa.fa-angle-down {
+    opacity: 0.2;
+    left: 20px;
+    color:green;
+    transition: 0.2s linear all;
+}
+
+.fa.fa-angle-up {
+    opacity: 0.2;
+    right: 20px;
+    color:green;
+    transition: 0.2s linear all;
+    float:right;
+}
+
+.fa.fa-angle-down:hover {
+    opacity: 1;
+    color:blue;
+}
+
+.fa.fa-angle-up:hover {
     opacity: 1;
     color:blue;
 }
