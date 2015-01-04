@@ -2,16 +2,16 @@
     
         <ol class="ionic-pages">
             <!--<li ng-repeat="n in [] | range:10" ng-class="{'ionic-current-page':$index===0}" ng-click="loadMoreByPaging()"></li>-->
-            <li ng-class="{'ionic-current-page':(celm % 10) == 1}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 2}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 3}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 4}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 5}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 6}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 7}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 8}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 9}"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 0}"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 1}" ng-click="scrollAtSlide(0)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 2}" ng-click="scrollAtSlide(1002)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 3}" ng-click="scrollAtSlide(2004)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 4}" ng-click="scrollAtSlide(3006)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 5}" ng-click="scrollAtSlide(4008)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 6}" ng-click="scrollAtSlide(5010)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 7}" ng-click="scrollAtSlide(6012)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 8}" ng-click="scrollAtSlide(7014)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 9}" ng-click="scrollAtSlide(8016)"></li>
+            <li ng-class="{'ionic-current-page':(celm % 10) == 0}" ng-click="scrollAtSlide(9018)"></li>
         </ol>
         
         <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->

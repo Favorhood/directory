@@ -179,6 +179,17 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           
         
       }
+      
+      $scope.scrollAtSlide = function(scrollposition)
+      {
+          if (scrollposition == 0) {
+              $scope.celm = 1;
+          } else {
+              $scope.celm = Math.ceil(scrollposition / 1002);
+              $scope.celm = $scope.celm + 1;
+          }
+          $scope.isde.scrollTo(scrollposition,0,true);
+      }
 
       $scope.scrollNext = function()
       {
@@ -400,7 +411,8 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         $scope.isde.scrollBottom(true);
         $scope.loadMore();
     }
-        
+    
+    console.log(scrollposition);
 
     });
 
