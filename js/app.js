@@ -185,11 +185,16 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
         // Stopping to AutoScroll
         $scope.settings.play = false;
         $scope.autoScroll('toggle');
-        
+        console.log(scrollposition);
         if($scope.settings.direction === 'x')
         {
           imScroll('x',$scope.isde,true);
-          $scope.celm = Math.ceil(scrollposition / 1002);
+          if (scrollposition == 0) {
+              $scope.celm = 2;
+          } else {
+              $scope.celm = Math.ceil(scrollposition / 1002);
+              $scope.celm = $scope.celm + 2;
+          }
         }
         else if($scope.settings.direction === 'y')
         {
