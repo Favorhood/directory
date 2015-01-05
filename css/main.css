@@ -80,7 +80,11 @@ body {
   top: 5px;
   color: #bbb;
 }
-
+.button-sm {
+  display:inline;
+  border: 1px solid #ccc;
+  padding: 2px 4px 2px 4px;
+}
 #vertical
 {
   height :100%;
