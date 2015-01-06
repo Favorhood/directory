@@ -29,9 +29,9 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       var scrollposition = 0;
       var check = false;
       
-      // Loading First 40 Items in the array
-      var locitems = $scope.items.length;
-      for(var i=0;i<40;i++)
+      var locitems = $scope.items.length,
+          dlen = $scope.feed.data.items.length;
+      for(var i=0;i<dlen;i++)
       {
           $scope.items.push($scope.feed.data.items[locitems + i]);
       }
