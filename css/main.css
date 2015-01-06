@@ -81,9 +81,10 @@ body {
   color: #bbb;
 }
 .button-sm {
-  display:inline;
+  display: inline;
   border: 1px solid #ccc;
   padding: 2px 4px 2px 4px;
+  cursor: pointer;
 }
 #vertical
 {
@@ -103,62 +104,39 @@ body {
 }
 
 
-.slideControls
-{
+.slideControls {
   position:absolute;
-  top:35%;
+  top:32%;
   z-index:1000;
-
+  color:#fff !important;
+  background-color: #333;
+  border-radius: 50%;
+  opacity: 0.4;
+  font-weight: 800;
+  font-size: 78px;
+  line-height: 58px;
+  height:60px;
+  width:60px;
+  text-align: center;
+  transition: 0.1s linear all;
 }
-
+.slideControls:hover {
+  opacity:0.7;
+  cursor:pointer;
+}
 .fa.fa-angle-left {
-    opacity: 0.2;
-    left: 20px;
-    color:green;
-    transition: 0.2s linear all;
+    left: 18px;
+    padding-right:8px;
 }
-
 .fa.fa-angle-right {
-    opacity: 0.2;
-    right: 20px;
-    color:green;
-    transition: 0.2s linear all;
-    float:right;
+    right: 18px;
+    padding-left:8px;
 }
-
-.fa.fa-angle-left:hover {
-    opacity: 1;
-    color:blue;
-}
-
-.fa.fa-angle-right:hover {
-    opacity: 1;
-    color:blue;
-}
-
 .fa.fa-angle-down {
-    opacity: 0.2;
     left: 20px;
-    color:green;
-    transition: 0.2s linear all;
 }
-
 .fa.fa-angle-up {
-    opacity: 0.2;
     right: 20px;
-    color:green;
-    transition: 0.2s linear all;
-    float:right;
-}
-
-.fa.fa-angle-down:hover {
-    opacity: 1;
-    color:blue;
-}
-
-.fa.fa-angle-up:hover {
-    opacity: 1;
-    color:blue;
 }
 
 .popup.popup-showing.active {
