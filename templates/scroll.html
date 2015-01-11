@@ -13,7 +13,7 @@
       <ion-scroll direction="x" ng-if="settings.direction == 'x'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" scroll-to="{{scrollTo}}" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '444px'}">
           <!-- Removed width:33% from the following -->
           <div style="margin:0px; position:relative;" class="item"
-              collection-repeat="item in getLocations()"
+              collection-repeat="item in items"
               collection-item-height="itemHeight"
               collection-item-width="itemWidth"
               ng-style="{height:444/settings.rows,width:itemWidth}">
@@ -33,7 +33,7 @@
       <ion-scroll direction="y" ng-if="settings.direction == 'y'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" scroll-to="{{scrollTo}}" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '444px'}">
           <!-- Removed width:33% from the following -->
           <div style="margin:0px; position:relative;" class="item"
-              collection-repeat="item in getLocations()"
+              collection-repeat="item in items"
               collection-item-height="itemHeight"
               collection-item-width="itemWidth"
               ng-style="{height:444/settings.rows,width:itemWidth}">
@@ -52,7 +52,7 @@
       </ion-scroll>
 
 
-      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" icon="" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
 
       <div style="padding:10px">
         <div style="float:right">
@@ -104,7 +104,7 @@
       <ion-scroll direction="x" ng-if="settings.direction == 'x'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" scroll-to="{{scrollTo}}" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '200px'}">
           <!-- Removed width:33% from the following -->
           <div style="margin:0px; position:relative;" class="item"
-              collection-repeat="item in getLocations()"
+              collection-repeat="item in items"
               collection-item-height="itemHeight"
               collection-item-width="itemWidth"
               ng-style="{height:444/settings.rows,width:itemWidth}">
@@ -126,7 +126,7 @@
       <ion-scroll direction="y" ng-if="settings.direction == 'x'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" scroll-to="{{scrollTo}}" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '500px'}">
           <!-- Removed width:33% from the following -->
           <div style="margin:0px; position:relative;" class="item"
-              collection-repeat="item in getLocations()"
+              collection-repeat="item in items"
               collection-item-height="itemHeight"
               collection-item-width="itemWidth"
               ng-style="{height:444/settings.rows,width:itemWidth}">

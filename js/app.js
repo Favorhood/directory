@@ -18,7 +18,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       $scope.feed = data;
       $scope.items = [];
       $scope.noMoreItemsAvailable = false;
-      $scope.number = 40;
+      $scope.number = 1;
       $scope.totalElement = $scope.feed.data.items.length;
       $scope.settings = {"play" : false,"direction" : "x" ,"rows" : 1,"cols" : 1};
       $scope.celm = 1;
@@ -28,17 +28,11 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       var currentCharCode = 'A'.charCodeAt(0) - 1;
       var scrollposition = 0;
       var check = false;
+      console.log($scope.feed.data.items);
       
-      var locitems = $scope.items.length,
-          dlen = $scope.feed.data.items.length;
-      for(var i=0;i<dlen;i++)
-      {
-          $scope.items.push($scope.feed.data.items[locitems + i]);
-      }
-      
-      $scope.items
+      $scope.feed.data.items
       .sort(function(a, b) {
-        return a.last_name > b.last_name ? 1 : -1;
+        return a.title > b.title ? 1 : -1;
       })
       .forEach(function(location) {
         //Get the first letter of the last name, and if the last name changes
@@ -96,6 +90,15 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           return true;
         });
       };
+      
+      var itemslen = $scope.items.length;
+      var locitems = $scope.getLocations();
+          
+      for(var i=0;i<$scope.number;i++)
+      {
+          $scope.items.push(locitems[itemslen + i]);
+      }
+      
  
       $scope.clearSearch = function() {
         $scope.search = '';
@@ -216,7 +219,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
       }
      
       //  It is called when there is need of more feed
-      $scope.loadMore = function()
+      /*$scope.loadMore = function()
       {
         
         locitems = $scope.items.length % $scope.totalElement;
@@ -236,35 +239,32 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
              $scope.items.push($scope.feed.data.items[locitems + i]);
           }
         }
-        
-        
-        
-        /* apply filter again */
-        $scope.items.filter(function(item) {
-          if (typeof item.title != 'undefined') {
-              var itemDoesMatch = !$scope.search || item.isLetter ||
-                item.title.toLowerCase().indexOf($scope.search.toLowerCase()) > -1;
-
-              //Mark this person's last name letter as 'has a match'
-              if (!item.isLetter && itemDoesMatch) {
-                var letter = item.title.charAt(0).toUpperCase();
-                letterHasMatch[letter] = true;
-              }
-
-              return itemDoesMatch;
-          }
-        }).filter(function(item) {
-          //Finally, re-filter all of the letters and take out ones that don't
-          //have a match
-          if (item.isLetter && !letterHasMatch[item.letter]) {
-            return false;
-          }
-          return true;
-        });
-
         $scope.$broadcast('scroll.infiniteScrollComplete');
   
-      }
+      }*/
+      
+      $scope.loadMore = function() {
+        console.log("loading elements");
+        var locitems = $scope.getLocations();
+        var itemslen = $scope.items.length;
+        var eltadd = $scope.number;
+        
+        if(itemslen < $scope.totalElement)  {
+            if(itemslen + eltadd > $scope.totalElement) {
+                eltadd = (itemslen + eltadd) - $scope.totalElement;
+            }
+            for(var i=0; i<eltadd; i++){
+              $scope.items.push(locitems[itemslen + i]);
+            }
+        }
+        
+        if ( $scope.items.length >= $scope.totalElement ) {
+        
+          $scope.noMoreItemsAvailable = true;
+        }
+       $scope.$broadcast('scroll.infiniteScrollComplete');
+        
+      };
 
       // Change the number of Items Displayed on screen
       $scope.itemWidth = 100/$scope.settings.cols + "%"; 
