@@ -62,7 +62,12 @@
         </div>
 
         <ol class="ionic-pages">
-            <!--<li ng-repeat="n in [] | range:10" ng-class="{'ionic-current-page':$index===0}" ng-click="loadMoreByPaging()"></li>-->
+            <li
+                ng-repeat="page in getPages() track by $index"
+                ng-class="{'ionic-current-page':(celm % 10) == $index + 1}"
+                ng-click="scrollAtSlide($index * 1002)"
+            ></li>
+            <!--
             <li ng-class="{'ionic-current-page':(celm % 10) == 1}" ng-click="scrollAtSlide(0)"></li>
             <li ng-class="{'ionic-current-page':(celm % 10) == 2}" ng-click="scrollAtSlide(1002)"></li>
             <li ng-class="{'ionic-current-page':(celm % 10) == 3}" ng-click="scrollAtSlide(2004)"></li>
@@ -73,6 +78,7 @@
             <li ng-class="{'ionic-current-page':(celm % 10) == 8}" ng-click="scrollAtSlide(7014)"></li>
             <li ng-class="{'ionic-current-page':(celm % 10) == 9}" ng-click="scrollAtSlide(8016)"></li>
             <li ng-class="{'ionic-current-page':(celm % 10) == 0}" ng-click="scrollAtSlide(9018)"></li>
+            -->
         </ol>
         
         <hr>

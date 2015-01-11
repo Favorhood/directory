@@ -410,9 +410,19 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
     {
         $scope.isde.scrollBottom(true);
         $scope.loadMore();
-    }
+    };
     
     console.log(scrollposition);
+    
+    
+    $scope.getPages = function() {
+        if($scope.items.length >=1 && $scope.items.length <= 24) {
+            return new Array($scope.items.length);
+        } else {
+            return new Array(10);
+        }
+    };
+    
 
     });
 
