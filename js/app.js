@@ -417,7 +417,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
     
     $scope.getPages = function() {
         if($scope.items.length >=1 && $scope.items.length <= 24) {
-            return new Array($scope.items.length);
+            return new Array($scope.totalElement);
         } else {
             return new Array(10);
         }
