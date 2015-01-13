@@ -396,7 +396,7 @@ app.controller('ScrollCtrl', function($scope,$http,$ionicScrollDelegate,$interva
           //$scope.currentElement = ($scope.totalElement - 1) - $scope.reverseElement % $scope.totalElement;
           //$scope.toscroll = $scope.isde.getScrollView()["__clientWidth"];
           //scrollposition = scrollposition + $scope.toscroll;
-          $scope.celm = Math.ceil(scrollposition / 1002);        
+          //$scope.celm = Math.ceil(scrollposition / 1002);        
 
           if($scope.settings.direction === 'x')
             scrollposition  = $scope.isde.getScrollPosition()["left"];
