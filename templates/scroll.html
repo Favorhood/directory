@@ -8,6 +8,10 @@
       <i ng-if="settings.direction == 'y'" class="fa fa-angle-up fa-4x slideControls" ng-click="scrollPrev()"></i>
       <i ng-if="settings.direction == 'y'" class="fa fa-angle-down fa-4x slideControls" ng-click="scrollNext()"></i>
 
+      <div style="background:#d14836;color:#fff;position:absolute;top:10px;left:10px;z-index:2000;padding:12px">
+      {{celm}} of {{totalElement}}<br>
+      Place copy of title here: {{item.title}}
+      </div>
 
       <!-- on-swipe-up and on-swipe-down might not have an effect. Test without these on mobile. Also adjust in duplicate instances at bottom of page. -->
       <ion-scroll direction="x" ng-if="settings.direction == 'x'" on-drag-up="onDragUp()" on-drag-down="onDragDown()" on-swipe-up="onDragUp()" on-swipe-down="onDragDown()" scroll-to="{{scrollTo}}" delegate-handle="isde" class="item wide-item" on-scroll="onScroll()" ng-style="{'height': '444px'}">
@@ -24,7 +28,8 @@
              <img ng-if="!lessRows" ng-src="{{item.images[0].thumbnail}}"  style="width:100%;max-width:120px">
               
               <div class="slide-text">
-                <div class="slide-title">{{$index+1}}. {{item.title}}</div>
+                <div class="slide-title">{{item.title}}</div>
+                <div>{{$index+1}} of {{totalElement}}</div>
               </div>                
 
           </div>
@@ -44,7 +49,8 @@
              <img ng-if="!lessRows" ng-src="{{item.images[0].thumbnail}}"  style="width:100%;max-width:120px">
 
               <div class="slide-text">
-                <div class="slide-title">{{$index+1}}. {{item.title}}</div>
+                <div class="slide-title">{{item.title}}</div>
+                <div>{{$index+1}} of {{totalElement}}</div>
               </div>                
 
           </div>
@@ -56,9 +62,10 @@
 
       <div style="padding:10px">
         <div style="float:right">
-            <div class="button icon ion-ios7-settings-strong" ng-click="ShowSettingsPopup()"></div>
-            <div ng-if="!settings.play" class="button icon ion-play" ng-click="autoScroll('button')"></div>
-            <div ng-if="settings.play" class="button icon ion-pause" ng-click="autoScroll('button')"></div>
+            <div class="button-plain icon ion-search" style="margin-right:10px" ng-click="ShowSettingsPopup()"></div>
+            <div class="button-plain icon ion-gear-a" style="margin-right:10px" ng-click="ShowSettingsPopup()"></div>
+            <div ng-if="!settings.play" class="button-plain icon ion-play" ng-click="autoScroll('button')"></div>
+            <div ng-if="settings.play" class="button-plain icon ion-pause" ng-click="autoScroll('button')"></div>
         </div>
 
         <ol class="ionic-pages">
@@ -81,6 +88,8 @@
             -->
         </ol>
         
+        <div>Place body here: {{item.title}}</div>
+
         <hr>
         <div class="button-sm" ng-click="scrollTop()">&lt;&lt;</div> &nbsp;
         {{celm}} of {{totalElement}} &nbsp;
