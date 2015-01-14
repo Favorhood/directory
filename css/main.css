@@ -24,13 +24,11 @@ body {
   opacity: 0.5;               /* Good browsers */
 }
 .searchbar {
-    width:100%;
-    max-width:1000px; 
-    margin:0 auto;
-    background-color: #bbb !important;
-    border-color: #bbb !important;
-    padding:10px;
-    min-height: 64px;
+    max-width: 120px;
+    padding:3px;
+    height:24px !important;
+    border:1px solid #ccc !important;
+    display: inline !important;
 }
 .contentHolder {
   width:100%;

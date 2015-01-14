@@ -61,9 +61,12 @@
       <ion-infinite-scroll icon="" ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
 
       <div style="padding:10px">
-        <div style="float:right">
-            <div class="button-plain icon ion-search" style="margin-right:10px" ng-click="ShowSettingsPopup()"></div>
-            <div class="button-plain icon ion-gear-a" style="margin-right:10px" ng-click="ShowSettingsPopup()"></div>
+        <div style="float:right;white-space:nowrap">
+            <div class="button-plain icon ion-search" ng-click="ShowSettingsPopup()"></div>
+            <input type="search" class="searchbar" placeholder="Filter results... {{settings.direction}}" ng-model="search" ng-focus="searchFocused = true"
+        ng-blur="searchFocused = false" ng-change="scrollTop()">
+
+            <div class="button-plain icon ion-gear-a" style="margin:0 10px 0 10px" ng-click="ShowSettingsPopup()"></div>
             <div ng-if="!settings.play" class="button-plain icon ion-play" ng-click="autoScroll('button')"></div>
             <div ng-if="settings.play" class="button-plain icon ion-pause" ng-click="autoScroll('button')"></div>
         </div>
@@ -104,12 +107,7 @@
 
         <!-- <h5 class="title" style="padding-left:8px">{{items.length}}</h5> -->
 
-      <div style="background:#eee;padding:18px">
-          <div class="bar-light searchbar">
-            <input type="search" placeholder="Filter results... {{settings.direction}}" ng-model="search" ng-focus="searchFocused = true"
-            ng-blur="searchFocused = false" ng-change="scrollTop()">
-          </div>
-      </div>
+        
 
       <br><br>
 
