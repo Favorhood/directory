@@ -62,9 +62,10 @@
 
       <div style="padding:10px">
         <div style="float:right;white-space:nowrap">
-            <div class="button-plain icon ion-search" ng-click="ShowSettingsPopup()"></div>
-            <input type="search" class="searchbar" placeholder="Filter results... {{settings.direction}}" ng-model="search" ng-focus="searchFocused = true"
-        ng-blur="searchFocused = false" ng-change="scrollTop()">
+            <div class="button-plain icon ion-search" ng-click="searchfield = !searchfield"></div>
+            <div ng-show="searchfield" >
+            <input type="search"  placeholder="Filter results... {{settings.direction}}" ng-model="search" ng-focus="searchFocused = true"
+        ng-blur="searchFocused = false" ng-change="scrollTop()"></div>
 
             <div class="button-plain icon ion-gear-a" style="margin:0 10px 0 10px" ng-click="ShowSettingsPopup()"></div>
             <div ng-if="!settings.play" class="button-plain icon ion-play" ng-click="autoScroll('button')"></div>

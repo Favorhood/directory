@@ -11,7 +11,7 @@ app.filter('range', function() {
   };
 });
 app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $interval, data, $ionicPopup, $state, filterFilter) {
-
+    
     $scope.isde = $ionicScrollDelegate.$getByHandle('isde');
     $scope.reverseElement = 0;
     $scope.toscroll = undefined;
@@ -28,7 +28,7 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
     var currentCharCode = 'A'.charCodeAt(0) - 1;
     var scrollposition = 0;
     var check = false;
-    console.log($scope.feed.data.items);
+    $scope.imgwidth = angular.element(document.querySelector('#horizontal'))[0].offsetWidth;
 
     $scope.feed.data.items
       .sort(function (a, b) {
@@ -149,7 +149,7 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
             }
             else {
                 imScroll('x', $scope.isde, false);
-                $scope.celm = Math.ceil(scrollposition / 1002);
+                $scope.celm = Math.ceil(scrollposition / $scope.imgwidth);
             }
         }
         // If Direction is Vertical
@@ -161,7 +161,7 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
             }
             else {
                 imScroll('y', $scope.isde, false);
-                $scope.celm = Math.ceil(scrollposition / 1002);
+                $scope.celm = Math.ceil(scrollposition / $scope.imgwidth);
             }
 
         }
@@ -174,13 +174,14 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
         if (scrollposition == 0) {
             $scope.celm = 1;
         } else {
-            $scope.celm = Math.ceil(scrollposition / 1002);
+            $scope.celm = Math.ceil(scrollposition / $scope.imgwidth);
             $scope.celm = $scope.celm + 1;
         }
         $scope.isde.scrollTo(scrollposition, 0, true);
     }
 
     $scope.scrollNext = function () {
+        console.log(angular.element(document.querySelector('div.item'))[0].offsetHeight);
         // Stopping to AutoScroll
         $scope.settings.play = false;
         $scope.autoScroll('toggle');
@@ -190,13 +191,13 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
             if (scrollposition == 0) {
                 $scope.celm = 2;
             } else {
-                $scope.celm = Math.ceil(scrollposition / 1002);
+                $scope.celm = Math.ceil(scrollposition / $scope.imgwidth);
                 $scope.celm = $scope.celm + 2;
             }
         }
         else if ($scope.settings.direction === 'y') {
             imScroll('y', $scope.isde, true);
-            $scope.celm = Math.ceil(scrollposition / 1002);
+            $scope.celm = Math.ceil(scrollposition / $scope.imgwidth);
         }
 
     }
@@ -278,7 +279,7 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
                 imScroll('x', $scope.isde, true);
                 scroll = $interval(function () {
                     imScroll('x', $scope.isde, true);
-                    $scope.celm = Math.ceil(scrollposition / 1002);
+                    $scope.celm = Math.ceil(scrollposition / $scope.imgwidth);
                 }, 2500);
             }
             else if ($scope.settings.direction === 'y') {
@@ -288,7 +289,7 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
 
                 scroll = $interval(function () {
                     imScroll('y', $scope.isde, true);
-                    $scope.celm = Math.ceil(scrollposition / 1002);
+                    $scope.celm = Math.ceil(scrollposition / $scope.imgwidth);
                 }, 2500);
             }
         }
@@ -394,7 +395,12 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
             return new Array(10);
         }
     };
-
+    //console.log(document.querySelector('.item')[0].offsetWidth);
+    
+    $scope.searchfield = false;
+    $scope.ShowSearchField = function() {
+        console.log("clicked");
+    };
 
 });
 
