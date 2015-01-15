@@ -261,9 +261,9 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
         $scope.itemWidth = 100 / $scope.settings.cols + "%";
         $scope.itemHeight = 100 / $scope.settings.rows + "%";
         $scope.lessRows = ($scope.settings.rows <= 3);
-        $scope.slideTextClass = $scope.settings.cols > 1 ? "slide-text-wide" : "slide-text";
+        $scope.slideTextClass = $scope.settings.cols > 1 ? "slide-text-col" : "slide-text";
+        $scope.slideTextClass = $scope.settings.rows >= 4 ? "slide-text-row" : $scope.slideTextClass;
         $scope.isde.resize();
-
     }
 
     // Function for Auto Scroll

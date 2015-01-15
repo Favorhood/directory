@@ -43,38 +43,33 @@ body {
   border-style: none;
   border-bottom:#ddd 1px solid;
 }
-.slide-text {
+.slideTextStyle {
   position: absolute;
   bottom: 0;
   min-height: 20%;
   min-width: 220px;
   clear: both;
+  font-family: arial, sans-serif;
+  color: #fff;
+  font-size: 13px;
+  background-color: rgba(33, 33, 33, 0.74902);
+  padding: 6px 16px 4px 10px;
+  white-space: normal;
+  z-index: 100;
+}
+.slide-text {
   left: 58%;
   right: 5%;
-  z-index: 100;
-  font-family: arial, sans-serif;
-  color: #fff;
-  font-size: 13px;
-  background-color: rgba(33, 33, 33, 0.74902);
-  padding: 6px 16px 4px 10px;
-  white-space: normal;
 }
-
-.slide-text-wide {
-  position: absolute;
-  bottom: 0;
-  min-height: 20%;
-  min-width: 220px;
-  clear: both;
+.slide-text-col {
   left: 0;
   right: 0;
-  z-index: 100;
-  font-family: arial, sans-serif;
-  color: #fff;
-  font-size: 13px;
-  background-color: rgba(33, 33, 33, 0.74902);
-  padding: 6px 16px 4px 10px;
-  white-space: normal;
+  min-height: 25%;
+}
+.slide-text-row {
+  top: 0;
+  left: 120;
+  right: 0;
 }
 .slide-title {
     font-family: Raleway,sans-serif;

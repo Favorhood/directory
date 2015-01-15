@@ -27,7 +27,7 @@
              <img ng-if="lessRows" ng-src="{{item.images[0].large}}" style="width:100%;">
              <img ng-if="!lessRows" ng-src="{{item.images[0].thumbnail}}"  style="width:100%;max-width:120px">
               
-              <div ng-class="slideTextClass">
+              <div class="slideTextStyle" ng-class="slideTextClass">
                 <div class="slide-title">{{item.title}}</div>
                 <div>{{$index+1}} of {{totalElement}}</div>
               </div>                
