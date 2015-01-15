@@ -49,6 +49,23 @@ body {
   min-height: 20%;
   min-width: 220px;
   clear: both;
+  left: 58%;
+  right: 5%;
+  z-index: 100;
+  font-family: arial, sans-serif;
+  color: #fff;
+  font-size: 13px;
+  background-color: rgba(33, 33, 33, 0.74902);
+  padding: 6px 16px 4px 10px;
+  white-space: normal;
+}
+
+.slide-text-wide {
+  position: absolute;
+  bottom: 0;
+  min-height: 20%;
+  min-width: 220px;
+  clear: both;
   left: 0;
   right: 0;
   z-index: 100;
@@ -58,10 +75,6 @@ body {
   background-color: rgba(33, 33, 33, 0.74902);
   padding: 6px 16px 4px 10px;
   white-space: normal;
-}
-.slide-text {
-  left:58%; right:5%; 
-  /* position:absolute;bottom:0px;right:0px;left:0px;color:#fff;background:#000;padding:10px */
 }
 .slide-title {
     font-family: Raleway,sans-serif;

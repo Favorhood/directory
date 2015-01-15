@@ -254,12 +254,14 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
     $scope.itemWidth = 100 / $scope.settings.cols + "%";
     $scope.itemHeight = 100 / $scope.settings.rows + "%";
     $scope.filmStripWidth = "33%";
+    $scope.slideTextClass = "slide-text";
 
     $scope.lessRows = $scope.settings.rows <= 3;
     $scope.changeItems = function () {
         $scope.itemWidth = 100 / $scope.settings.cols + "%";
         $scope.itemHeight = 100 / $scope.settings.rows + "%";
         $scope.lessRows = ($scope.settings.rows <= 3);
+        $scope.slideTextClass = $scope.settings.cols > 1 ? "slide-text-wide" : "slide-text";
         $scope.isde.resize();
 
     }
