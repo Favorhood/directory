@@ -170,6 +170,7 @@ app.controller('ScrollCtrl', function ($scope, $http, $ionicScrollDelegate, $int
 
     }
 
+    /* Not currently used.  Was used when 10 dots resided in scroll.html */
     $scope.scrollAtSlide = function (scrollposition) {
         if (scrollposition == 0) {
             $scope.celm = 1;

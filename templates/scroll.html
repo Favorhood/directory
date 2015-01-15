@@ -8,7 +8,7 @@
       <i ng-if="settings.direction == 'y'" class="fa fa-angle-up fa-4x slideControls" ng-click="scrollPrev()"></i>
       <i ng-if="settings.direction == 'y'" class="fa fa-angle-down fa-4x slideControls" ng-click="scrollNext()"></i>
 
-      <div style="background:#d14836;color:#fff;position:absolute;top:10px;left:10px;z-index:2000;padding:12px">
+      <div style="display:none;background:#d14836;color:#fff;position:absolute;top:10px;left:10px;z-index:2000;padding:12px">
       {{celm}} of {{totalElement}}<br>
       Place copy of title here: {{item.title}}
       </div>
@@ -61,7 +61,7 @@
       <ion-infinite-scroll icon="" ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
 
       <div style="padding:10px">
-        <div style="float:right;white-space:nowrap">
+        <div style="float:right;white-space:nowrap;margin-bottom:6px">
             <div class="button-plain icon ion-search" ng-click="searchfield = !searchfield"></div>
             <div ng-show="searchfield" style="display: inline">
             <input type="search"  placeholder="Filter results..." ng-model="search" ng-focus="searchFocused = true"
@@ -78,23 +78,9 @@
                 ng-class="{'ionic-current-page':(celm % 10) == $index + 1}"
                 ng-click="scrollAtSlide($index * 1002)"
             ></li>
-            <!--
-            <li ng-class="{'ionic-current-page':(celm % 10) == 1}" ng-click="scrollAtSlide(0)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 2}" ng-click="scrollAtSlide(1002)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 3}" ng-click="scrollAtSlide(2004)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 4}" ng-click="scrollAtSlide(3006)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 5}" ng-click="scrollAtSlide(4008)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 6}" ng-click="scrollAtSlide(5010)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 7}" ng-click="scrollAtSlide(6012)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 8}" ng-click="scrollAtSlide(7014)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 9}" ng-click="scrollAtSlide(8016)"></li>
-            <li ng-class="{'ionic-current-page':(celm % 10) == 0}" ng-click="scrollAtSlide(9018)"></li>
-            -->
         </ol>
-        
-        <div>Place body here: {{item.title}}</div>
 
-        <hr>
+        <hr style="clear:both">
         <div class="button-sm" ng-click="scrollTop()">&lt;&lt;</div> &nbsp;
         {{celm}} of {{totalElement}} &nbsp;
         <div class="button-sm" ng-click="scrollBottom()">&gt;&gt;</div>

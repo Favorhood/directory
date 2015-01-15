@@ -26,7 +26,7 @@ body {
 .searchbar {
     max-width: 120px;
     padding:3px;
-    height:24px !important;
+    height:20px !important;
     border:1px solid #ccc !important;
     display: inline !important;
 }
