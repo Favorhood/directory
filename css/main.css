@@ -193,6 +193,22 @@ body {
 .button {
   line-height: normal;
 }
+.ionic-pages li {
+    list-style: none;
+    border: 1px solid #ccc;
+    background : white;
+    border-radius: 3em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0 .3em;
+    padding: 0;
+    cursor: pointer;
+}
+.ionic-current-page {
+    background : orange !important;
+    
+}
 
 /* Destop version */
 .has-header{
