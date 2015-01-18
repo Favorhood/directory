@@ -1,7 +1,7 @@
       //var $scope.isde = null;
 'use strict';
 
-var app =  angular.module('contactsApp', ['ionic','contactsApp.config','contactsApp.directives']);
+var app =  angular.module('contactsApp', ['ionic','ionic.contrib.drawer','contactsApp.config','contactsApp.directives']);
 app.filter('range', function() {
   return function(input, total) {
     total = parseInt(total);
