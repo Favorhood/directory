@@ -26,9 +26,25 @@ angular.module('contactsApp.config',['ionic'])
                 });
 
                 return deffered.promise;
+              },
+              flickr : function($http, $q) {
+                var deffered = $q.defer();
+                $http.jsonp("http://api.flickr.com/services/feeds/photos_public.gne?tagmode=any&tags=\"Grant+Park+Atlanta\"&lang=en-us&format=json&jsoncallback=JSON_CALLBACK").then(function (data) {
+
+                    deffered.resolve(data);
+                });
+                return deffered.promise;
               }
-          },
-          controller : 'ScrollCtrl',
-          templateUrl : 'templates/scroll.html'
+          }, 
+          views: {
+            'gallery' : {
+              templateUrl : 'templates/gallery.html',
+              controller : 'ScrollCtrl'
+            },
+            'flickr' : {
+              templateUrl : 'templates/flickr.html',
+              controller : 'FlickrCtrl'
+            }
+          }
        })
 });

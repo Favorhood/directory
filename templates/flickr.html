@@ -1,0 +1,26 @@
+<h5>Duplicate for testing multiple instances</h5>
+
+Filmstrip:<br>
+<ion-scroll direction="x" delegate-handle="isdeflickr" class="item wide-item" ng-style="{'height': '200px'}">
+  <!-- Removed width:33% from the following -->
+  <div style="margin:0px; position:relative;" class="item"
+      collection-repeat="item in items"
+      collection-item-height="itemHeight"
+      collection-item-width="filmStripWidth"              
+      ng-style="{height:444/settings.rows,width:filmStripWidth}">
+
+     <!--<img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}"> -->
+     
+     <img ng-if="lessRows" ng-src="{{item.media['m']}}" style="width:100%;">
+     <img ng-if="!lessRows" ng-src="{{item.media['m']}}"  style="width:100%;max-width:120px">
+      
+      <div class="slide-text">
+        <div class="slide-title">{{$index+1}}. {{item.title}}</div>
+      </div>                
+
+  </div>
+</ion-scroll>
+
+<ion-infinite-scroll icon="" ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
+
+<br>
