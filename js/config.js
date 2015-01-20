@@ -29,7 +29,7 @@ angular.module('contactsApp.config',['ionic'])
               },
               flickr : function($http, $q) {
                 var deffered = $q.defer();
-                $http.jsonp("http://api.flickr.com/services/feeds/photos_public.gne?tagmode=any&tags=\"Grant+Park+Atlanta\"&lang=en-us&format=json&jsoncallback=JSON_CALLBACK").then(function (data) {
+                $http.jsonp("http://api.flickr.com/services/feeds/photos_public.gne?tagmode=any&tags=\"Tour+of+Homes\"&lang=en-us&format=json&jsoncallback=JSON_CALLBACK").then(function (data) {
 
                     deffered.resolve(data);
                 });
